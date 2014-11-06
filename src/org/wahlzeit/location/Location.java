@@ -1,28 +1,60 @@
 package org.wahlzeit.location;
 
 public interface Location {
-	
 	/**
 	 * Gets the location.
 	 * @methodtype get
 	 */
-	public void getLocation();
+	public double[] getLocation();
+	
+	/**
+	 * Gets the laitute of the location.
+	 * @methodtype get
+	 */
+	public double getLatitude();
+	
+	/**
+	 * Gets the longitude of location.
+	 * @methodtype get
+	 */
+	public double getLongitude();
+	
+	/**
+	 * Gets the mapcode of the location.
+	 * @methodtype get
+	 */
+	public String getMapcode();
+	
 	
 	/**
 	 * Sets the location.
 	 * @methodtype set
 	 */
-	public void setLocation(Location location) throws InvalidLocationException;
+	public void setLocation(double[] location);
 	
+	/**
+	 * Sets the mapcode as location of a photo.
+	 * @methodtype set
+	 */
+	public void setMapcode(String mapcode);
 	
-	public void removeLocation() throws InvalidLocationException;
+	public void setLocation(double latitude, double longitude);
+	/**
+	 * Removes the location from the photo.
+	 * @methodtype command method
+	 */
+	public void removeLocation();
 	
-	public void hasLocation(Location location) throws InvalidLocationException;
+	/**
+	 * Checks if the photo has an location.
+	 * @methodtype boolean query method
+	 */
+	public boolean hasLocation();
 	
 	/**
 	 * Returns a simple readable discription of the location.
 	 * @return String
-	 * @methodtype get
+	 * @methodtype conversion
 	 */
 	public String asString();
 	

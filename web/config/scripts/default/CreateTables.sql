@@ -29,6 +29,8 @@ CREATE TABLE photos (
 	status integer,
 	praise_sum integer,
 	no_votes integer,
+	lat decimal, 
+	lon decimal,
 	creation_time bigint
 );
 

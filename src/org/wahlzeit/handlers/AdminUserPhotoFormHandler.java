@@ -22,6 +22,8 @@ package org.wahlzeit.handlers;
 
 import java.util.*;
 
+import org.wahlzeit.location.GPSLocation;
+import org.wahlzeit.location.Location;
 import org.wahlzeit.model.*;
 import org.wahlzeit.webparts.*;
 
@@ -67,7 +69,29 @@ public class AdminUserPhotoFormHandler extends AbstractWebFormHandler {
 		photo.setTags(new Tags(tags));
 		String status = us.getAndSaveAsString(args, Photo.STATUS);
 		photo.setStatus(PhotoStatus.getFromString(status));
-
+		
+		double lat=0.0;
+		double lon=0.0;
+		
+		try {
+			lat = Double.parseDouble(us.getAndSaveAsString(args, Photo.LAT));
+			lon = Double.parseDouble(us.getAndSaveAsString(args, Photo.LON));
+		}
+		catch(Exception e)
+		{
+			lat=0.0;
+			lon = 0.0;
+		}
+		
+		String mapcode = us.getAndSaveAsString(args, Photo.MAPCODE);
+		Location location;
+		location = new GPSLocation(lat, lon);
+		
+		if(lat == 0.0 && lon == 0.0 && mapcode != "") {
+			location.setMapcode(mapcode);
+		}
+		photo.setLocation(location);
+		
 		PhotoManager pm = PhotoManager.getInstance();
 		pm.savePhoto(photo);
 		

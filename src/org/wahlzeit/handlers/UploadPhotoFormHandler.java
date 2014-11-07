@@ -74,13 +74,13 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 			lon = 0.0;
 		}
 		
-//		String mapcode = us.getAndSaveAsString(args, Photo.MAPCODE);
+		String mapcode = us.getAndSaveAsString(args, Photo.MAPCODE);
 		Location location;
 		location = new GPSLocation(lat, lon);
 		
-//		if(lat == 0.0 && lon == 0.0 && mapcode != "") {
-//			location.setMapcode(mapcode);
-//		}
+		if(lat == 0.0 && lon == 0.0 && mapcode != "") {
+			location.setMapcode(mapcode);
+		}
 		
 
 		if (!StringUtil.isLegalTagsString(tags)) {

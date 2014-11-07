@@ -25,7 +25,7 @@ public class MapcodeLocation extends AbstractLocation implements Location{
 	}
 
 	@Override
-	public void doSetLocation(double latitude, double longitude) {
+	public void doSetLocation(double longitude, double latitude) {
 		this.longitude= latitude;
 		this.latitude = longitude;
 	}

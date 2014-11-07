@@ -1,6 +1,5 @@
 package org.wahlzeit.location;
 
-import java.awt.Image;
 
 import com.mapcode.Mapcode;
 import com.mapcode.MapcodeCodec;
@@ -17,7 +16,7 @@ public class GPSLocation extends AbstractLocation implements Location {
 		this.longitude = 0.0;
 	}
 	
-	public GPSLocation(double latitude, double longitude){
+	public GPSLocation(double longitude, double latitude){
 //		assertIsValidLocation(location);	
 		this.latitude= latitude;
 		this.longitude = longitude;
@@ -25,7 +24,7 @@ public class GPSLocation extends AbstractLocation implements Location {
 	
 
 	@Override
-	public void doSetLocation(double latitude, double longitude) {
+	public void doSetLocation( double longitude, double latitude) {
 		this.longitude= longitude;
 		this.latitude = latitude;
 	}
@@ -50,7 +49,7 @@ public class GPSLocation extends AbstractLocation implements Location {
 
 	@Override
 	public double[] getLocation() {
-		return new double[]{this.latitude,this.longitude};
+		return new double[]{this.longitude, this.latitude};
 	}
 
 	@Override
@@ -76,14 +75,14 @@ public class GPSLocation extends AbstractLocation implements Location {
 
 	@Override
 	public String getMapcode() {
-		Mapcode mapcode = MapcodeCodec.encodeToInternational(this.latitude,this.longitude);
+		Mapcode mapcode = MapcodeCodec.encodeToInternational(this.longitude, this.latitude);
 		return mapcode.toString();
 		
 	}
 
 	@Override
 	public String asString() {
-		return this.latitude + "" + this.longitude;
+		return this.longitude + " " +this.latitude ;
 	}
 
 }

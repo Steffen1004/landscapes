@@ -41,8 +41,8 @@ public abstract class AbstractLocation implements Location {
 	 * Sets the location.
 	 * @methodtype set
 	 */
-	public void setLocation(double latitude, double longitude) {
-		doSetLocation(latitude, longitude);
+	public void setLocation(double longitude, double latitude) {
+		doSetLocation(longitude, latitude);
 	}
 	
 

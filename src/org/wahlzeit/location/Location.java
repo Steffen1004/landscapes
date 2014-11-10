@@ -1,11 +1,6 @@
 package org.wahlzeit.location;
 
 public interface Location {
-	/**
-	 * Gets the location.
-	 * @methodtype get
-	 */
-	public double[] getLocation();
 	
 	/**
 	 * Gets the laitute of the location.
@@ -38,7 +33,12 @@ public interface Location {
 	 */
 	public void setMapcode(String mapcode);
 	
+	/**
+	 * Sets the location(latitude, longitude).
+	 * @methodtype set
+	 */
 	public void setLocation(double latitude, double longitude);
+	
 	/**
 	 * Removes the location from the photo.
 	 * @methodtype command method
@@ -61,10 +61,10 @@ public interface Location {
 	/**
 	 * Returns true if objects are equal.
 	 * Objects may be different classes.
-	 * @param location
+	 * @param latitude, longitude
 	 * @return boolean
 	 */
-	public boolean isEqual(Location location);
+	public boolean isEqual(double latitude, double longitude);
 
 	
 	

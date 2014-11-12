@@ -1,5 +1,12 @@
 package org.wahlzeit.location;
 
+/**
+ * GPSLocation implementation. 
+ *
+ * @author Steffen Loskarn
+ * @version 1.0, 07.11.2014
+ *
+ */
 
 import com.mapcode.Mapcode;
 import com.mapcode.MapcodeCodec;
@@ -11,11 +18,24 @@ public class GPSLocation extends AbstractLocation implements Location {
 	private double latitude; 
 	private double longitude;
 	
+	/**
+	 * Constructor.
+	 * Initializes a new GPSLocation.
+	 * 
+	 * @param
+	 */
 	public GPSLocation(){
 		this.latitude =  0.0;
 		this.longitude = 0.0;
 	}
 	
+	/**
+	 * Constructor.
+	 * Initializes a new GPSLocation.
+	 * 
+	 * @param double latitude
+	 * 		  double longitude
+	 */
 	public GPSLocation(double latitude,double longitude){
 		assertIsValidLocation(latitude, longitude);	
 		initialize(latitude,longitude);
@@ -29,16 +49,6 @@ public class GPSLocation extends AbstractLocation implements Location {
 		this.latitude= latitude;
 		this.longitude = longitude;
 	}
-	
-
-	@Override
-	/**
-	 * Sets the location(latitude, longitude).
-	 * @methodtype set
-	 */
-	public void doSetLocation(double latitude, double longitude) {
-		initialize(latitude,longitude);
-	}
 
 	
 	/**
@@ -49,8 +59,17 @@ public class GPSLocation extends AbstractLocation implements Location {
 			throw new IllegalArgumentException("Not a valid latitude!");
 		}
 		if (longitude < -180 || longitude > 180) {
-			throw new IllegalArgumentException("Not a valid latitude!");
+			throw new IllegalArgumentException("Not a valid longitude!");
 		}
+	}
+	
+	@Override
+	/**
+	 * Sets the location(latitude, longitude).
+	 * @methodtype set
+	 */
+	public void doSetLocation(double latitude, double longitude) {
+		initialize(latitude,longitude);
 	}
 
 	/**
@@ -69,7 +88,6 @@ public class GPSLocation extends AbstractLocation implements Location {
 		return this.longitude;
 	}
 
-
 	@Override
 	/**
 	 * Checks if the photo has an location.
@@ -82,6 +100,16 @@ public class GPSLocation extends AbstractLocation implements Location {
 		return true;
 	}
 
+	@Override
+	/**
+	 * Gets the mapcode of the location.
+	 * @methodtype get
+	 */
+	public String getMapcode() {
+		Mapcode mapcode = MapcodeCodec.encodeToInternational( this.latitude,this.longitude);
+		return mapcode.toString();	
+	}
+	
 	@Override
 	/**
 	 * Sets the mapcode as location of a photo.
@@ -102,17 +130,6 @@ public class GPSLocation extends AbstractLocation implements Location {
 
 	@Override
 	/**
-	 * Gets the mapcode of the location.
-	 * @methodtype get
-	 */
-	public String getMapcode() {
-		Mapcode mapcode = MapcodeCodec.encodeToInternational( this.latitude,this.longitude);
-		return mapcode.toString();
-		
-	}
-
-	@Override
-	/**
 	 * Returns a simple readable discription of the location.
 	 * @return String
 	 * @methodtype get
@@ -122,9 +139,15 @@ public class GPSLocation extends AbstractLocation implements Location {
 	}
 
 	@Override
+	/**
+	 * Checks if the photo has an location.
+	 * @methodtype boolean query method
+	 */
 	public boolean isEqual(double latitude, double longitude) {
-		// TODO Auto-generated method stub
-		return false;
+		if(this.latitude == latitude && this.longitude==longitude)
+			return true;
+		else
+			return false;
 	}
 
 }

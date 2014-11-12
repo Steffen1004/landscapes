@@ -1,7 +1,14 @@
 package org.wahlzeit.location;
 
+/**
+ * Abstract class Location which implements the interface location.
+ *
+ * @author Steffen Loskarn
+ * @version 1.0, 07.11.2014
+ *
+ */
+
 public abstract class AbstractLocation implements Location {
-	
 	
 	/**
 	 * Sets the mapcode as location of a photo.

@@ -1,5 +1,14 @@
 package org.wahlzeit.location;
 
+/**
+ * Location interface 
+ *
+ * @author Steffen Loskarn
+ * @version 1.0, 07.11.2014
+ *
+ */
+
+
 public interface Location {
 	
 	/**
@@ -65,10 +74,4 @@ public interface Location {
 	 * @return boolean
 	 */
 	public boolean isEqual(double latitude, double longitude);
-
-	
-	
-	
-
-
 }

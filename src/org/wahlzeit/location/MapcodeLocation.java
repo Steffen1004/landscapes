@@ -1,5 +1,13 @@
 package org.wahlzeit.location;
 
+/**
+ * Mapcode Location implementation. 
+ *
+ * @author Steffen Loskarn
+ * @version 1.0, 07.11.2014
+ *
+ */
+
 import java.util.List;
 
 import com.mapcode.Mapcode;
@@ -14,12 +22,23 @@ public class MapcodeLocation extends AbstractLocation implements Location{
 	private double latitude;
 	private String mapcode; //contains the mapcode information i.e. "NLD 49.v4"
 
-	
+	/**
+	 * Constructor.
+	 * Initializes a new MapcodeLocation.
+	 * 
+	 * @param
+	 */
 	public MapcodeLocation(){
 		this.mapcode="";
 		initialize(mapcode);
 	}
 	
+	/**
+	 * Constructor.
+	 * Initializes a new MapcodeLocation.
+	 * 
+	 * @param String param
+	 */
 	public MapcodeLocation(String mapcode){
 		assertIsValidLocation(mapcode);
 		this.mapcode=mapcode;

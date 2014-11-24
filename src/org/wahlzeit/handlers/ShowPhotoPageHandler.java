@@ -22,6 +22,7 @@ package org.wahlzeit.handlers;
 
 import java.util.*;
 
+import org.wahlzeit.location.LandscapePhoto;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
@@ -164,7 +165,16 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 		WebPart caption = createWebPart(us, PartUtil.CAPTION_INFO_FILE);
 		caption.addString(Photo.CAPTION, getPhotoCaption(us, photo));
 		caption.addString(Photo.LOCATION, photo.getLocation());
+		makeLandscapePhotoCaption(photo, caption);
+
 		page.addWritable(Photo.CAPTION, caption);
+	}
+	
+	public void makeLandscapePhotoCaption(Photo photo, WebPart caption){
+		if(photo instanceof LandscapePhoto){
+			LandscapePhoto landscapePhoto = (LandscapePhoto)photo;
+			caption.addString(LandscapePhoto.TYPE, landscapePhoto.getLandscapeType());
+		}
 	}
 
 	/**

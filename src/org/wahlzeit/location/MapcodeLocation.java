@@ -23,9 +23,9 @@ public class MapcodeLocation extends AbstractLocation implements Location{
 	private String mapcode; //contains the mapcode information i.e. "NLD 49.v4"
 
 	/**
-	 * Constructor.
 	 * Initializes a new MapcodeLocation.
 	 * 
+	 * @methodtype constructor 
 	 * @param
 	 */
 	public MapcodeLocation(){
@@ -34,9 +34,9 @@ public class MapcodeLocation extends AbstractLocation implements Location{
 	}
 	
 	/**
-	 * Constructor.
 	 * Initializes a new MapcodeLocation.
 	 * 
+	 * @methodtype constructor 
 	 * @param String param
 	 */
 	public MapcodeLocation(String mapcode){

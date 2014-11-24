@@ -24,6 +24,8 @@ import java.util.*;
 import java.io.*;
 
 import org.wahlzeit.location.GPSLocation;
+import org.wahlzeit.location.LandscapePhoto;
+import org.wahlzeit.location.LandscapeType;
 import org.wahlzeit.location.Location;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.*;
@@ -81,7 +83,6 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 		if(lat == 0.0 && lon == 0.0 && mapcode != "") {
 			location.setMapcode(mapcode);
 		}
-		
 
 		if (!StringUtil.isLegalTagsString(tags)) {
 			us.setMessage(us.cfg().getInputIsInvalid());
@@ -104,6 +105,8 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 			
 			photo.setLocation(location);
 			
+			doHandleLandscapePhotoPost(photo, us, args);
+			
 			pm.savePhoto(photo);
 
 			StringBuffer sb = UserLog.createActionEntry("UploadPhoto");
@@ -117,6 +120,26 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 		}
 		
 		return PartUtil.UPLOAD_PHOTO_PAGE_NAME;
+	}
+	
+	public void doHandleLandscapePhotoPost(Photo photo, UserSession us, Map args){
+		if(photo instanceof LandscapePhoto){
+		LandscapePhoto landscapePhoto = (LandscapePhoto)photo;
+		try{
+		boolean mountain = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.MOUNTAINS));
+		boolean dessert = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.DESSERT));
+		boolean ocean = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.OCEAN));
+		boolean steppe = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.STEPPE));
+		boolean beach = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.BEACH));
+		boolean countryside = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.COUNTRYSIDE));
+		boolean forest = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.FOREST));
+		
+		LandscapeType landscapeType = new LandscapeType(mountain,forest ,dessert, countryside, beach, steppe, ocean);
+		landscapePhoto.setLandscapeType(landscapeType);
+		}	
+		catch(Exception e)
+		{}
+		}
 	}
 	
 	/**

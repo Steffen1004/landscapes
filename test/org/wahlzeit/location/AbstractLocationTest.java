@@ -1,5 +1,9 @@
 package org.wahlzeit.location;
 
+import org.wahlzeit.location.GPSLocation;
+import org.wahlzeit.location.Location;
+import org.wahlzeit.location.MapcodeLocation;
+
 import com.mapcode.MapcodeCodec;
 
 import junit.framework.TestCase;

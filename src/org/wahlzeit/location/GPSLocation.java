@@ -19,9 +19,9 @@ public class GPSLocation extends AbstractLocation implements Location {
 	private double longitude;
 	
 	/**
-	 * Constructor.
 	 * Initializes a new GPSLocation.
 	 * 
+	 * @methodtype constructor
 	 * @param
 	 */
 	public GPSLocation(){
@@ -30,9 +30,9 @@ public class GPSLocation extends AbstractLocation implements Location {
 	}
 	
 	/**
-	 * Constructor.
 	 * Initializes a new GPSLocation.
 	 * 
+	 * @methodtype constructor
 	 * @param double latitude
 	 * 		  double longitude
 	 */

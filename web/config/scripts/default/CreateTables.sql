@@ -31,6 +31,13 @@ CREATE TABLE photos (
 	no_votes integer,
 	lat decimal, 
 	lon decimal,
+	mountains boolean,
+	beach boolean,
+	countryside boolean,
+	dessert boolean,
+	steppe boolean,
+	ocean boolean,
+	forest boolean,
 	creation_time bigint
 );
 

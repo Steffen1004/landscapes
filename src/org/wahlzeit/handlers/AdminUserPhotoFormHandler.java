@@ -23,6 +23,8 @@ package org.wahlzeit.handlers;
 import java.util.*;
 
 import org.wahlzeit.location.GPSLocation;
+import org.wahlzeit.location.LandscapePhoto;
+import org.wahlzeit.location.LandscapeType;
 import org.wahlzeit.location.Location;
 import org.wahlzeit.model.*;
 import org.wahlzeit.webparts.*;
@@ -92,6 +94,8 @@ public class AdminUserPhotoFormHandler extends AbstractWebFormHandler {
 		}
 		photo.setLocation(location);
 		
+		doHandleLandscapePhotoPost( photo, us, args);
+		
 		PhotoManager pm = PhotoManager.getInstance();
 		pm.savePhoto(photo);
 		
@@ -102,6 +106,26 @@ public class AdminUserPhotoFormHandler extends AbstractWebFormHandler {
 		us.setMessage(us.cfg().getPhotoUpdateSucceeded());
 
 		return PartUtil.SHOW_ADMIN_PAGE_NAME;
+	}
+	
+	public void doHandleLandscapePhotoPost(Photo photo, UserSession us, Map args){
+		if(photo instanceof LandscapePhoto){
+		LandscapePhoto landscapePhoto = (LandscapePhoto)photo;
+		try{
+		boolean mountain = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.MOUNTAINS));
+		boolean dessert = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.DESSERT));
+		boolean ocean = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.OCEAN));
+		boolean steppe = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.STEPPE));
+		boolean beach = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.BEACH));
+		boolean countryside = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.COUNTRYSIDE));
+		boolean forest = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.FOREST));
+		
+		LandscapeType landscapeType = new LandscapeType(mountain,forest ,dessert, countryside, beach, steppe, ocean);
+		landscapePhoto.setLandscapeType(landscapeType);
+		}	
+		catch(Exception e)
+		{}
+		}
 	}
 	
 }

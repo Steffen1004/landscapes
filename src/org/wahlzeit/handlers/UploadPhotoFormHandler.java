@@ -23,10 +23,10 @@ package org.wahlzeit.handlers;
 import java.util.*;
 import java.io.*;
 
-import org.wahlzeit.location.GPSLocation;
-import org.wahlzeit.location.LandscapePhoto;
-import org.wahlzeit.location.LandscapeType;
-import org.wahlzeit.location.Location;
+import org.wahlzeit.domain.GPSLocation;
+import org.wahlzeit.domain.LandscapePhoto;
+import org.wahlzeit.domain.LandscapeType;
+import org.wahlzeit.domain.Location;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;

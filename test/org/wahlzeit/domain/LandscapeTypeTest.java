@@ -1,4 +1,6 @@
-package org.wahlzeit.location;
+package org.wahlzeit.domain;
+
+import org.wahlzeit.domain.LandscapeType;
 
 import junit.framework.TestCase;
 

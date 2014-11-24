@@ -1,4 +1,4 @@
-package org.wahlzeit.location;
+package org.wahlzeit.domain;
 
 /**
  * Abstract class Location which implements the interface location.

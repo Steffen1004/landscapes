@@ -1,4 +1,4 @@
-package org.wahlzeit.location;
+package org.wahlzeit.domain;
 
 /**
  * LandscapeType contains the type of photo.  
@@ -204,6 +204,7 @@ public class LandscapeType {
 			type+="countryside, ";
 		if(this.forest)
 			type+="forest, ";
+		
 		if(type.length()!=0)
 		return type.substring(0,type.length()-2);
 		else

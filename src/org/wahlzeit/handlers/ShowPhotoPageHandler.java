@@ -22,7 +22,7 @@ package org.wahlzeit.handlers;
 
 import java.util.*;
 
-import org.wahlzeit.location.LandscapePhoto;
+import org.wahlzeit.domain.LandscapePhoto;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;

@@ -23,8 +23,8 @@ package org.wahlzeit.model;
 import java.sql.*;
 import java.net.*;
 
-import org.wahlzeit.location.GPSLocation;
-import org.wahlzeit.location.Location;
+import org.wahlzeit.domain.GPSLocation;
+import org.wahlzeit.domain.Location;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
 

@@ -1,8 +1,8 @@
-package org.wahlzeit.location;
+package org.wahlzeit.domain;
 
-import org.wahlzeit.location.GPSLocation;
-import org.wahlzeit.location.Location;
-import org.wahlzeit.location.MapcodeLocation;
+import org.wahlzeit.domain.GPSLocation;
+import org.wahlzeit.domain.Location;
+import org.wahlzeit.domain.MapcodeLocation;
 
 import com.mapcode.MapcodeCodec;
 

@@ -11,27 +11,6 @@ public class LandscapePhotoTest extends TestCase {
 		super.setUp();
 	}
 
-	public void testReadFrom() {
-		fail("Not yet implemented");
-	}
-
-	public void testWriteOn() {
-		fail("Not yet implemented");
-	}
-
-	public void testLandscapePhoto() {
-		fail("Not yet implemented");
-	}
-
-	public void testLandscapePhotoPhotoId() {
-		fail("Not yet implemented");
-	}
-
-	public void testLandscapePhotoResultSet() {
-		fail("Not yet implemented");
-	}
-
-
 	public void testGetLandscapeType() {
 		
 		LandscapePhoto landscapePhoto = new LandscapePhoto();

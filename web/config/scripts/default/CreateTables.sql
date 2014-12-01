@@ -38,6 +38,7 @@ CREATE TABLE photos (
 	steppe boolean,
 	ocean boolean,
 	forest boolean,
+	filter text,
 	creation_time bigint
 );
 

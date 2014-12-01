@@ -24,6 +24,7 @@ import java.util.*;
 
 import org.wahlzeit.domain.GPSLocation;
 import org.wahlzeit.domain.LandscapePhoto;
+import org.wahlzeit.domain.LandscapePhotoFilterEnum;
 import org.wahlzeit.domain.LandscapeType;
 import org.wahlzeit.domain.Location;
 import org.wahlzeit.model.*;
@@ -122,6 +123,9 @@ public class AdminUserPhotoFormHandler extends AbstractWebFormHandler {
 		
 		LandscapeType landscapeType = new LandscapeType(mountain,forest ,dessert, countryside, beach, steppe, ocean);
 		landscapePhoto.setLandscapeType(landscapeType);
+		
+		LandscapePhotoFilterEnum filter = LandscapePhotoFilterEnum.valueOf(us.getAndSaveAsString(args, LandscapePhoto.FILTER));
+		landscapePhoto.setLandscapePhotoFilterEnum(filter);
 		}	
 		catch(Exception e)
 		{}

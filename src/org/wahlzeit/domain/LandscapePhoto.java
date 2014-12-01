@@ -24,8 +24,10 @@ public class LandscapePhoto extends Photo{
 	public static final String STEPPE = "steppe";
 	public static final String OCEAN = "ocean";
 	public static final String FOREST = "forest";
+	public static final String FILTER = "filter";
 	
 	protected LandscapeType landscapeType = new LandscapeType();
+	protected LandscapePhotoFilterEnum filter = LandscapePhotoFilterEnum.NONE;
 
 	/**
 	 * 
@@ -68,6 +70,7 @@ public class LandscapePhoto extends Photo{
 		boolean forest = rset.getBoolean("forest");
 		
 		this.landscapeType = new LandscapeType(mountain,forest ,dessert, countryside, beach, steppe, ocean);
+		this.filter = LandscapePhotoFilterEnum.valueOf(rset.getString("filter"));
 	}
 	
 	/**
@@ -85,6 +88,7 @@ public class LandscapePhoto extends Photo{
 		rset.updateBoolean("beach", landscapeType.getBeach());
 		rset.updateBoolean("countryside", landscapeType.getCountryside());
 		rset.updateBoolean("forest", landscapeType.gettForest());
+		rset.updateString("filter", filter.name());
 	}
 	
 	/**
@@ -93,6 +97,7 @@ public class LandscapePhoto extends Photo{
 	 */
 	public void setLandscapeType(LandscapeType landscapeType){
 		this.landscapeType = landscapeType;
+		incWriteCount();
 		
 		assert landscapeType == this.landscapeType;			//postcondition
 	}
@@ -104,4 +109,25 @@ public class LandscapePhoto extends Photo{
 	public String getLandscapeType(){
 		return this.landscapeType.asString();
 	}
+	
+	/**
+	 *
+	 * @methodtype get method
+	 */
+	public LandscapePhotoFilterEnum getLandscapePhotoFilterEnum(){
+		return this.filter;
+	}
+	
+	/**
+	 *
+	 * @methodtype set method
+	 */
+	public void setLandscapePhotoFilterEnum(LandscapePhotoFilterEnum filter){
+		this.filter = filter;
+		incWriteCount();
+		
+		assert filter == this.filter;			//postcondition
+	}
+	
+	
 }

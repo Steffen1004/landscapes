@@ -1,0 +1,17 @@
+package org.wahlzeit.domain;
+
+/**
+ * Interface EnumValue.
+ *
+ * @author Steffen Loskarn
+ * @version 1.0, 28.11.2014
+ *
+ */
+
+public interface EnumValue {	
+	
+	public String asString();
+	public EnumValue[] getAllValues();
+	public String getTypeName();
+	
+}

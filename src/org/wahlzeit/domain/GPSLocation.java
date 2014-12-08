@@ -4,7 +4,8 @@ package org.wahlzeit.domain;
  * GPSLocation implementation. 
  *
  * @author Steffen Loskarn
- * @version 1.0, 07.11.2014
+ * @version 1.0
+ * @date 07.11.2014
  *
  */
 

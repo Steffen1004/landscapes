@@ -7,7 +7,8 @@ package org.wahlzeit.domain;
  * - mountain and ocean 
  *
  * @author Steffen Loskarn
- * @version 1.0, 19.11.2014
+ * @version 1.0
+ * @date 19.11.2014
  *
  */
 

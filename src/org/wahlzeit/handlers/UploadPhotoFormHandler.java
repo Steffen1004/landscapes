@@ -24,6 +24,8 @@ import java.util.*;
 import java.io.*;
 
 import org.wahlzeit.domain.GPSLocation;
+import org.wahlzeit.domain.Landscape;
+import org.wahlzeit.domain.LandscapeManager;
 import org.wahlzeit.domain.LandscapePhoto;
 import org.wahlzeit.domain.LandscapeType;
 import org.wahlzeit.domain.LandscapePhotoFilterEnum;
@@ -125,21 +127,29 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 	
 	public void doHandleLandscapePhotoPost(Photo photo, UserSession us, Map args){
 		if(photo instanceof LandscapePhoto){
-		LandscapePhoto landscapePhoto = (LandscapePhoto)photo;
-		try{
-		boolean mountain = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.MOUNTAINS));
-		boolean dessert = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.DESSERT));
-		boolean ocean = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.OCEAN));
-		boolean steppe = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.STEPPE));
-		boolean beach = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.BEACH));
-		boolean countryside = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.COUNTRYSIDE));
-		boolean forest = Boolean.parseBoolean(us.getAndSaveAsString(args, LandscapePhoto.FOREST));
-		
+		try{	
+		String landscapeID = us.getAndSaveAsString(args, "landscapeID");
+			
+		boolean mountain = Boolean.parseBoolean(us.getAndSaveAsString(args, "mountains"));
+		boolean dessert = Boolean.parseBoolean(us.getAndSaveAsString(args, "dessert"));
+		boolean ocean = Boolean.parseBoolean(us.getAndSaveAsString(args, "ocean"));
+		boolean steppe = Boolean.parseBoolean(us.getAndSaveAsString(args, "steppe"));
+		boolean beach = Boolean.parseBoolean(us.getAndSaveAsString(args, "beach"));
+		boolean countryside = Boolean.parseBoolean(us.getAndSaveAsString(args, "countryside"));
+		boolean forest = Boolean.parseBoolean(us.getAndSaveAsString(args, "forest"));
 		LandscapeType landscapeType = new LandscapeType(mountain,forest ,dessert, countryside, beach, steppe, ocean);
-		landscapePhoto.setLandscapeType(landscapeType);
 		
-		LandscapePhotoFilterEnum filter = LandscapePhotoFilterEnum.valueOf(us.getAndSaveAsString(args, LandscapePhoto.FILTER));
-		landscapePhoto.setLandscapePhotoFilterEnum(filter);
+		LandscapePhotoFilterEnum filter = LandscapePhotoFilterEnum.valueOf(us.getAndSaveAsString(args, "filter"));
+		
+		LandscapeManager lm = LandscapeManager.getInstance();
+		Landscape landscape = lm.createLandscape();
+		landscape.setLandscapeType(landscapeType);
+		landscape.setLandscapePhotoFilterEnum(filter);
+		
+		LandscapePhoto landscapePhoto = (LandscapePhoto)photo;
+		landscapePhoto.setLandscape(landscape);
+		
+		lm.saveLandscape(landscape);
 		}	
 		catch(Exception e)
 		{}

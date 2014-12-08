@@ -24,6 +24,7 @@ import java.io.*;
 import java.sql.*;
 import java.util.*;
 
+import org.wahlzeit.domain.LandscapePhotoFactory;
 import org.wahlzeit.main.*;
 import org.wahlzeit.services.*;
 
@@ -137,7 +138,8 @@ public class PhotoManager extends ObjectManager {
 	 * 
 	 */
 	protected Photo createObject(ResultSet rset) throws SQLException {
-		return PhotoFactory.getInstance().createPhoto(rset);
+//		return PhotoFactory.getInstance().createPhoto(rset);
+		return LandscapePhotoFactory.getInstance().createPhoto(rset);
 	}
 	
 	/**

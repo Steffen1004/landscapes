@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.sql.*;
 
+import org.wahlzeit.domain.LandscapeManager;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.*;
 import org.wahlzeit.servlets.AbstractServlet;
@@ -138,6 +139,9 @@ public abstract class ModelMain extends AbstractMain {
 			int lastSessionId = result.getInt("last_session_id");
 			AbstractServlet.setLastSessionId(lastSessionId);		
 			SysLog.logSysInfo("loaded global variable lastSessionId: " + lastSessionId);
+			int lastLandscapeId = result.getInt("last_landscape_id");
+			LandscapeManager.getInstance().setCurrentId(lastLandscapeId);		
+			SysLog.logSysInfo("loaded global variable lastLandscapeId: " + lastLandscapeId);
 		} else {
 			SysLog.logSysError("Could not load globals!");
 		}
@@ -170,6 +174,9 @@ public abstract class ModelMain extends AbstractMain {
 			int lastSessionId = AbstractServlet.getLastSessionId();
 			rset.updateInt("last_session_id", lastSessionId);
 			SysLog.logSysInfo("saved global variable lastSessionId: " + lastSessionId);
+			int lastLandscapeId = LandscapeManager.getInstance().getCurrentId();
+			rset.updateInt("last_landscape_id", lastLandscapeId);
+			SysLog.logSysInfo("saved global variable lastLandscapeId: " + lastLandscapeId);
 			rset.updateRow();
 		} else {
 			SysLog.logSysError("Could not save globals!");
@@ -185,6 +192,7 @@ public abstract class ModelMain extends AbstractMain {
 		PhotoCaseManager.getInstance().savePhotoCases();
 		PhotoManager.getInstance().savePhotos();			
 		UserManager.getInstance().saveUsers();
+		LandscapeManager.getInstance().saveLandscapes();
 
 		saveGlobals();
 	}

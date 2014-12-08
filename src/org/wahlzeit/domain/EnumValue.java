@@ -4,7 +4,8 @@ package org.wahlzeit.domain;
  * Interface EnumValue.
  *
  * @author Steffen Loskarn
- * @version 1.0, 28.11.2014
+ * @version 1.0
+ * @date 28.11.2014
  *
  */
 

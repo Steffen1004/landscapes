@@ -23,8 +23,10 @@ package org.wahlzeit.model;
 import java.io.*;
 import java.awt.*;
 import java.awt.image.*;
+
 import javax.imageio.*;
 
+import org.wahlzeit.domain.LandscapePhotoFactory;
 import org.wahlzeit.services.*;
 
 /**
@@ -40,7 +42,8 @@ public class PhotoUtil {
 	 * 
 	 */
 	public static Photo createPhoto(File source, PhotoId id) throws Exception {
-		Photo result = PhotoFactory.getInstance().createPhoto(id);
+//		Photo result = PhotoFactory.getInstance().createPhoto(id);
+		Photo result = LandscapePhotoFactory.getInstance().createPhoto(id);
 		
 		Image sourceImage = createImageFiles(source, id);
 

@@ -15,6 +15,18 @@ CREATE TABLE users (
 	creation_time bigint
 );
 
+CREATE TABLE landscapes(
+	id integer PRIMARY KEY,
+	mountains boolean,
+	beach boolean,
+	countryside boolean,
+	dessert boolean,
+	steppe boolean,
+	ocean boolean,
+	forest boolean,
+	filter text,
+	);
+
 CREATE TABLE photos (
 	id integer PRIMARY KEY,
 	owner_id integer REFERENCES users(id),
@@ -31,14 +43,7 @@ CREATE TABLE photos (
 	no_votes integer,
 	lat decimal, 
 	lon decimal,
-	mountains boolean,
-	beach boolean,
-	countryside boolean,
-	dessert boolean,
-	steppe boolean,
-	ocean boolean,
-	forest boolean,
-	filter text,
+	guitar_id integer REFERENCES guitars(id),
 	creation_time bigint
 );
 
@@ -63,12 +68,15 @@ CREATE TABLE globals (
 	last_user_id integer,
 	last_photo_id integer,
 	last_case_id integer,
-	last_session_id integer
+	last_session_id integer,
+	last_landscape_id integer
 );
 
-INSERT INTO globals (id, last_user_id, last_photo_id, last_case_id, last_session_id)
-	VALUES (0, 1, 0, 0, 0);
+INSERT INTO globals (id, last_user_id, last_photo_id, last_case_id, last_session_id, last_landscape_id)
+	VALUES (0, 1, 0, 0, 0, 0);
 
 INSERT INTO users (id, name, name_as_tag, email_address, "password", rights, status)
 	VALUES (1, 'admin', 'admin', 'root@localhost', 'admin', 4, 1);
 
+INSERT INTO landscapes(id, mountains, beach, countryside, dessert, steppe, ocean, forest, filter)
+	VALUES(-1, 'mountains', 'beach', 'countryside', 'dessert', 'steppe', 'ocean', 'forest', 'filter');

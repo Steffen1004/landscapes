@@ -11,30 +11,18 @@ public class LandscapePhotoTest extends TestCase {
 		super.setUp();
 	}
 
-	public void testGetLandscapeType() {
 		
-		LandscapePhoto landscapePhoto = new LandscapePhoto();
-		
-		boolean mountain= true;
-		boolean forest= false;
-		boolean dessert= true;
-		boolean countryside= true; 
-		boolean beach= true;
-		boolean steppe= true;
-		boolean ocean= false;
-		
-		LandscapeType landscapetype = new LandscapeType(mountain,forest ,dessert, countryside, beach, steppe, ocean);
-		
-		landscapePhoto.setLandscapeType(landscapetype);
-		assertEquals("mountains, dessert, steppe, beach, countryside", landscapePhoto.getLandscapeType());
-	}
-	
-	public void testGetLandscapePhotoFilter(){
-		LandscapePhoto landscapePhoto = new LandscapePhoto();
-		LandscapePhotoFilterEnum filter = LandscapePhotoFilterEnum.valueOf("UV_FILTER");
-		landscapePhoto.setLandscapePhotoFilterEnum(filter);
-		
-		assertEquals("UV_FILTER", landscapePhoto.getLandscapePhotoFilterEnum());
+	public void testNewLandscapePhoto() {
+					LandscapePhoto photo = (LandscapePhoto) LandscapePhotoFactory.getInstance().createPhoto();
+			 	}
+			 	
+	public void testNullAssignmentLandscapePhoto(){
+		LandscapePhoto photo = (LandscapePhoto) LandscapePhotoFactory.getInstance().createPhoto();
+			 try {
+					photo.getLandscape().setLandscapePhotoFilterEnum(null);
+			 	} catch (IllegalArgumentException as) {
+			 		return;
+			 	}
 		
 	}
 

@@ -47,7 +47,6 @@ public class LandscapeManager extends ObjectManager{
 	public void setCurrentId(int currentId) {
 		if (currentId < 0) {
 			throw new IllegalArgumentException();
-			
 		}
 		
 		this.currentId = currentId;

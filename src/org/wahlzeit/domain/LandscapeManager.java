@@ -43,17 +43,6 @@ public class LandscapeManager extends ObjectManager{
 	protected Map<Integer, Landscape> landscapeCache = new HashMap<Integer, Landscape>();
 	
 	protected int currentId = 0;
-	
-	public void setCurrentId(int currentId) {
-		if (currentId < 0) {
-			throw new IllegalArgumentException();
-		}
-		
-		this.currentId = currentId;
-	}
-	public int getCurrentId() {
-		return currentId;
-	}
 
 	/**
 	 * 
@@ -66,6 +55,18 @@ public class LandscapeManager extends ObjectManager{
 	 * @methodtype constructor
 	 */
 	protected LandscapeManager() {
+	}
+	
+	public void setCurrentId(int currentId) {
+		if (currentId < 0) {
+			throw new IllegalArgumentException();
+		}
+		
+		this.currentId = currentId;
+	}
+	
+	public int getCurrentId() {
+		return currentId;
 	}
 	
 	public final boolean hasLandscape(Integer id) {

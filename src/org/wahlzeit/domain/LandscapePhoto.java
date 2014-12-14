@@ -19,32 +19,7 @@ public class LandscapePhoto extends Photo{
 
 	protected Landscape landscape;
 	
-	/**
-	 *
-	 * @methodtype get method
-	 */
-	public Landscape getLandscape() {
-		return this.landscape;
-	}
-	
-	/**
-	 *
-	 * @methodtype set method
-	 */
-	public void setLandscape(Landscape landscape)
-	{
-		//precondition
-		if(landscape == null)
-		{
-			throw new IllegalArgumentException();
-		}
-		
-		this.landscape=landscape;
-		incWriteCount();
-		
-		//postcondition
-		assert(this.landscape.equals(landscape));
-	}
+
 	/**
 	 * 
 	 * @methodtype constructor
@@ -89,6 +64,33 @@ public class LandscapePhoto extends Photo{
 		super.readFrom(rset);
 		
 		this.landscape = LandscapeManager.getInstance().getLandscapeFromId(rset.getInt("landscape_id"));
+	}
+	
+	/**
+	 *
+	 * @methodtype get method
+	 */
+	public Landscape getLandscape() {
+		return this.landscape;
+	}
+	
+	/**
+	 *
+	 * @methodtype set method
+	 */
+	public void setLandscape(Landscape landscape)
+	{
+		//precondition
+		if(landscape == null)
+		{
+			throw new IllegalArgumentException();
+		}
+		
+		this.landscape=landscape;
+		incWriteCount();
+		
+		//postcondition
+		assert(this.landscape.equals(landscape));
 	}
 	
 	/**

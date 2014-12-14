@@ -128,7 +128,7 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 	public void doHandleLandscapePhotoPost(Photo photo, UserSession us, Map args){
 		if(photo instanceof LandscapePhoto){
 		try{	
-		String landscapeID = us.getAndSaveAsString(args, "landscapeID");
+		String landscapeID = us.getAndSaveAsString(args, "landscape_id");
 			
 		boolean mountain = Boolean.parseBoolean(us.getAndSaveAsString(args, "mountains"));
 		boolean dessert = Boolean.parseBoolean(us.getAndSaveAsString(args, "dessert"));

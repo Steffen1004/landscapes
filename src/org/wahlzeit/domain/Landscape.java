@@ -28,28 +28,11 @@ public class Landscape extends DataObject{
 	public static final String FILTER = "filter";
 	
 	protected Integer id;
-	protected String name;
 	protected LandscapeType landscapeType = new LandscapeType();
 	protected LandscapePhotoFilterEnum filter = LandscapePhotoFilterEnum.NONE;
 	
 	public Integer getId() {
 		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		//precondition
-		if(name == null){
-			throw new IllegalArgumentException();
-		}
-		this.name = name;
-		incWriteCount();
-		
-		//postcondition
-		assert(this.name == name);
 	}
 
 	public Landscape(Integer id) {
@@ -60,10 +43,6 @@ public class Landscape extends DataObject{
 	public Landscape(ResultSet rset) throws SQLException{
 		this.readFrom(rset);
 	}
-	
-//	public String asString() {
-//		return "ID: " + this.id + ", LandscapeType: " + this.landscapeType.asString();
-//	}
 
 	@Override
 	public String getIdAsString() {
@@ -73,7 +52,6 @@ public class Landscape extends DataObject{
 	@Override
 	public void readFrom(ResultSet rset) throws SQLException {
 		this.id = rset.getInt("id");
-		this.name = rset.getString("name");
 		
 		boolean mountain = rset.getBoolean("mountains");
 		boolean dessert = rset.getBoolean("dessert");
@@ -89,7 +67,6 @@ public class Landscape extends DataObject{
 	@Override
 	public void writeOn(ResultSet rset) throws SQLException {
 		rset.updateInt("id", this.id);
-		rset.updateString("name", this.name);
 		
 		rset.updateBoolean("mountains", landscapeType.getMountain());
 		rset.updateBoolean("dessert", landscapeType.getDessert());

@@ -24,7 +24,7 @@ CREATE TABLE landscapes(
 	steppe boolean,
 	ocean boolean,
 	forest boolean,
-	filter text,
+	filter text
 	);
 
 CREATE TABLE photos (
@@ -43,7 +43,7 @@ CREATE TABLE photos (
 	no_votes integer,
 	lat decimal, 
 	lon decimal,
-	guitar_id integer REFERENCES guitars(id),
+	landscape_id integer REFERENCES landscapes(id),
 	creation_time bigint
 );
 

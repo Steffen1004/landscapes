@@ -12,11 +12,22 @@ package org.wahlzeit.domain;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoId;
 
 public class LandscapePhoto extends Photo{
 
+	public static final String TYPE = "type";
+	public static final String MOUNTAINS = "mountains";
+	public static final String BEACH = "beach";
+	public static final String COUNTRYSIDE = "countryside";
+	public static final String DESSERT = "dessert";
+	public static final String STEPPE = "steppe";
+	public static final String OCEAN = "ocean";
+	public static final String FOREST = "forest";
+	public static final String FILTER = "filter";
+	
 	protected Landscape landscape;
 	
 

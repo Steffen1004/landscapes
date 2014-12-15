@@ -173,8 +173,8 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 	public void makeLandscapePhotoCaption(Photo photo, WebPart caption){
 		if(photo instanceof LandscapePhoto){
 			LandscapePhoto landscapePhoto = (LandscapePhoto)photo;
-			caption.addString("type", landscapePhoto.getLandscape().getLandscapeType());
-			caption.addString("filter", landscapePhoto.getLandscape().getLandscapePhotoFilterEnum().name());
+			caption.addString("type", landscapePhoto.getLandscape().getType().getLandscapeStyle().asString());
+			caption.addString("filter", landscapePhoto.getLandscape().getType().getLandscapePhotoFilterEnum().name());
 		}
 	}
 

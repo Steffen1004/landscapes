@@ -1,10 +1,10 @@
 package org.wahlzeit.domain;
 
-import org.wahlzeit.domain.LandscapeType;
+import org.wahlzeit.domain.LandscapeStyle;
 
 import junit.framework.TestCase;
 
-public class LandscapeTypeTest extends TestCase {
+public class LandscapeStyleTest extends TestCase {
 
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -12,7 +12,7 @@ public class LandscapeTypeTest extends TestCase {
 
 
 	public void testSetMountainAndSetOcean() {
-		LandscapeType landscapetype = new LandscapeType();
+		LandscapeStyle landscapetype = new LandscapeStyle();
 		landscapetype.setMountain(true);
 
 		boolean exceptionThrown = false;
@@ -28,7 +28,7 @@ public class LandscapeTypeTest extends TestCase {
 	}
 	
 	public void testSetOceanAndSetMountain() {
-		LandscapeType landscapetype = new LandscapeType();
+		LandscapeStyle landscapetype = new LandscapeStyle();
 		landscapetype.setOcean(true);
 
 		boolean exceptionThrown = false;
@@ -44,7 +44,7 @@ public class LandscapeTypeTest extends TestCase {
 	}
 	
 	public void testSetForestAndSetDessert() {
-		LandscapeType landscapetype = new LandscapeType();
+		LandscapeStyle landscapetype = new LandscapeStyle();
 		landscapetype.setForest(true);
 
 		boolean exceptionThrown = false;
@@ -60,7 +60,7 @@ public class LandscapeTypeTest extends TestCase {
 	}
 	
 	public void testSetDessertAndSetForest() {
-		LandscapeType landscapetype = new LandscapeType();
+		LandscapeStyle landscapetype = new LandscapeStyle();
 		landscapetype.setDessert(true);
 
 		boolean exceptionThrown = false;
@@ -85,7 +85,7 @@ public class LandscapeTypeTest extends TestCase {
 		boolean steppe= true;
 		boolean ocean= false;
 		
-		LandscapeType landscapetype = new LandscapeType(mountain,forest ,dessert, countryside, beach, steppe, ocean);
+		LandscapeStyle landscapetype = new LandscapeStyle(mountain,forest ,dessert, countryside, beach, steppe, ocean);
 		
 		assertEquals("mountains, dessert, steppe, beach, countryside", landscapetype.asString());
 	}

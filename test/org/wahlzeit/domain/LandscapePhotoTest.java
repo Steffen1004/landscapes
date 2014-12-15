@@ -1,7 +1,7 @@
 package org.wahlzeit.domain;
 
 import org.wahlzeit.domain.LandscapePhoto;
-import org.wahlzeit.domain.LandscapeType;
+import org.wahlzeit.domain.LandscapeStyle;
 
 import junit.framework.TestCase;
 
@@ -12,14 +12,17 @@ public class LandscapePhotoTest extends TestCase {
 	}
 
 		
-	public void testNewLandscapePhoto() {
-					LandscapePhoto photo = (LandscapePhoto) LandscapePhotoFactory.getInstance().createPhoto();
-			 	}
+	public void testNewLandscapePhoto() 
+	{
+		LandscapePhoto photo = (LandscapePhoto) LandscapePhotoFactory.getInstance().createPhoto();	
+	}
+		
 			 	
-	public void testNullAssignmentLandscapePhoto(){
+	public void testNullAssignmentLandscapePhoto()
+	{
 		LandscapePhoto photo = (LandscapePhoto) LandscapePhotoFactory.getInstance().createPhoto();
 			 try {
-					photo.getLandscape().setLandscapePhotoFilterEnum(null);
+					photo.getLandscape().getType().setLandscapePhotoFilterEnum(null);
 			 	} catch (IllegalArgumentException as) {
 			 		return;
 			 	}

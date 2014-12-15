@@ -7,41 +7,104 @@ import java.sql.SQLException;
 import org.wahlzeit.services.DataObject;
 
 /**
- * Landscape Photo. 
+ * The “Object” Landscape provides instance specific functionality, 
+ * i.e. ID and description, and delegates type-specific requests to type object (LandscapeType). 
  *
  * @author Steffen Loskarn
- * @version 1.0
- * @date 03.12.2014
+ * @version 2.0
+ * @date 14.12.2014
  *
  */
 
 public class Landscape extends DataObject{
+		
+	private Integer id;
+	private String description;
+	private LandscapeType type = new LandscapeType();;
 	
-	public static final String TYPE = "type";
-	public static final String MOUNTAINS = "mountains";
-	public static final String BEACH = "beach";
-	public static final String COUNTRYSIDE = "countryside";
-	public static final String DESSERT = "dessert";
-	public static final String STEPPE = "steppe";
-	public static final String OCEAN = "ocean";
-	public static final String FOREST = "forest";
-	public static final String FILTER = "filter";
-	
-	protected Integer id;
-	protected LandscapeType landscapeType = new LandscapeType();
-	protected LandscapePhotoFilterEnum filter = LandscapePhotoFilterEnum.NONE;
-	
-	public Integer getId() {
-		return id;
-	}
-
+	/**
+	 * 
+	 * @methodtype constructor
+	 */
 	public Landscape(Integer id) {
 		this.id = id;
 		incWriteCount();
 	}
 	
+	/**
+	 * 
+	 * @methodtype constructor
+	 */
+	public Landscape(Integer id, String description) {
+		this.id = id;
+		this.description = description;
+		incWriteCount();
+	}
+	
+	/**
+	 * 
+	 * @methodtype constructor
+	 */
 	public Landscape(ResultSet rset) throws SQLException{
 		this.readFrom(rset);
+	}
+	
+	/**
+	 *
+	 * @methodtype get method
+	 */
+	public Integer getId() {
+		return id;
+	}
+	
+	/**
+	 *
+	 * @methodtype get method
+	 */
+	public String getDescription() {
+		return this.description;
+	}
+	
+	/**
+	 *
+	 * @methodtype get method
+	 */
+	public LandscapeType getType() {
+		return type;
+	}	
+	
+	/**
+	 *
+	 * @methodtype set method
+	 */
+	public void setLandscapeType(LandscapeType type) {
+		//precondition
+		if(type == null)
+		{
+			throw new IllegalArgumentException();
+		}
+		this.type = type;
+		incWriteCount();
+		
+		//postcondition
+		assert this.type == type;
+	}
+	
+	/**
+	 *
+	 * @methodtype set method
+	 */
+	public void setDescription(String description) {
+		//precondition
+		if(description == "")
+		{
+			throw new IllegalArgumentException();
+		}
+		
+		this.description = description;
+			
+		//postcondition
+		assert this.description == description;
 	}
 
 	@Override
@@ -61,78 +124,26 @@ public class Landscape extends DataObject{
 		boolean countryside = rset.getBoolean("countryside");
 		boolean forest = rset.getBoolean("forest");
 		
-		this.landscapeType = new LandscapeType(mountain,forest ,dessert, countryside, beach, steppe, ocean);
-		this.filter = LandscapePhotoFilterEnum.valueOf(rset.getString("filter"));
+		this.type.setLandscapeStyle(new LandscapeStyle(mountain,forest ,dessert, countryside, beach, steppe, ocean));
+		this.type.setLandscapePhotoFilterEnum(LandscapePhotoFilterEnum.valueOf(rset.getString("filter")));
 	}
+	
 	@Override
 	public void writeOn(ResultSet rset) throws SQLException {
 		rset.updateInt("id", this.id);
 		
-		rset.updateBoolean("mountains", landscapeType.getMountain());
-		rset.updateBoolean("dessert", landscapeType.getDessert());
-		rset.updateBoolean("ocean", landscapeType.getOcean());
-		rset.updateBoolean("steppe", landscapeType.getSteppe());
-		rset.updateBoolean("beach", landscapeType.getBeach());
-		rset.updateBoolean("countryside", landscapeType.getCountryside());
-		rset.updateBoolean("forest", landscapeType.gettForest());
-		rset.updateString("filter", filter.name());
+		rset.updateBoolean("mountains", this.type.getLandscapeStyle().getMountain());
+		rset.updateBoolean("dessert", this.type.getLandscapeStyle().getDessert());
+		rset.updateBoolean("ocean", this.type.getLandscapeStyle().getOcean());
+		rset.updateBoolean("steppe", this.type.getLandscapeStyle().getSteppe());
+		rset.updateBoolean("beach", this.type.getLandscapeStyle().getBeach());
+		rset.updateBoolean("countryside", this.type.getLandscapeStyle().getCountryside());
+		rset.updateBoolean("forest", this.type.getLandscapeStyle().gettForest());
+		rset.updateString("filter", this.type.getLandscapePhotoFilterEnum().name());
 	}
+	
 	@Override
 	public void writeId(PreparedStatement stmt, int pos) throws SQLException {
 		stmt.setInt(pos, this.id);
 	}
-	
-	/**
-	 *
-	 * @methodtype get method
-	 */
-	public String getLandscapeType(){
-		return this.landscapeType.asString();
-	}
-	
-	/**
-	 *
-	 * @methodtype set method
-	 */
-	public void setLandscapeType(LandscapeType landscapeType){
-		//precondition
-		if(landscapeType == null)
-		{
-			throw new IllegalArgumentException();
-		}
-		
-		this.landscapeType = landscapeType;
-		incWriteCount();
-		
-		//postcondition
-		assert landscapeType == this.landscapeType;			//postcondition
-	}
-
-	
-	/**
-	 *
-	 * @methodtype get method
-	 */
-	public LandscapePhotoFilterEnum getLandscapePhotoFilterEnum(){
-		return this.filter;
-	}
-	
-	/**
-	 *
-	 * @methodtype set method
-	 */
-	public void setLandscapePhotoFilterEnum(LandscapePhotoFilterEnum filter){
-		//precondition
-		if(filter == null)
-		{
-			throw new IllegalArgumentException();
-		}
-		
-		this.filter = filter;
-		incWriteCount();
-		
-		//postcondition
-		assert filter == this.filter;			
-	}
-	
 }

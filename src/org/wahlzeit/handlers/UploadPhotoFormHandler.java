@@ -27,7 +27,7 @@ import org.wahlzeit.domain.GPSLocation;
 import org.wahlzeit.domain.Landscape;
 import org.wahlzeit.domain.LandscapeManager;
 import org.wahlzeit.domain.LandscapePhoto;
-import org.wahlzeit.domain.LandscapeType;
+import org.wahlzeit.domain.LandscapeStyle;
 import org.wahlzeit.domain.LandscapePhotoFilterEnum;
 import org.wahlzeit.domain.Location;
 import org.wahlzeit.model.*;
@@ -137,14 +137,14 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 		boolean beach = Boolean.parseBoolean(us.getAndSaveAsString(args, "beach"));
 		boolean countryside = Boolean.parseBoolean(us.getAndSaveAsString(args, "countryside"));
 		boolean forest = Boolean.parseBoolean(us.getAndSaveAsString(args, "forest"));
-		LandscapeType landscapeType = new LandscapeType(mountain,forest ,dessert, countryside, beach, steppe, ocean);
+		LandscapeStyle landscapeType = new LandscapeStyle(mountain,forest ,dessert, countryside, beach, steppe, ocean);
 		
 		LandscapePhotoFilterEnum filter = LandscapePhotoFilterEnum.valueOf(us.getAndSaveAsString(args, "filter"));
 		
 		LandscapeManager lm = LandscapeManager.getInstance();
 		Landscape landscape = lm.createLandscape();
-		landscape.setLandscapeType(landscapeType);
-		landscape.setLandscapePhotoFilterEnum(filter);
+		landscape.getType().setLandscapeStyle(landscapeType);
+		landscape.getType().setLandscapePhotoFilterEnum(filter);
 		
 		LandscapePhoto landscapePhoto = (LandscapePhoto)photo;
 		landscapePhoto.setLandscape(landscape);

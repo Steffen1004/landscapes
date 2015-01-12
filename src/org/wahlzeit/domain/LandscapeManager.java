@@ -63,6 +63,9 @@ public class LandscapeManager extends ObjectManager {
 	protected LandscapeManager() {
 	}
 
+
+	/************************* Manager Collaboration: “Manager” methods ***************************************/
+	
 	public void setCurrentId(int currentId) {
 		if (currentId < 0) {
 			throw new IllegalArgumentException();
@@ -97,7 +100,6 @@ public class LandscapeManager extends ObjectManager {
 		this.landscapeCache.put(landscape.getId(), landscape);
 	}
 
-	/************************* Manager Collaboration: “Manager” methods ***************************************/
 
 	public void addLandscape(Landscape landscape) {
 		assertIsNewLandscape(landscape.getId());
@@ -113,10 +115,7 @@ public class LandscapeManager extends ObjectManager {
 		}
 	}
 
-	@Override
-	protected Persistent createObject(ResultSet rset) throws SQLException {
-		return LandscapePhotoFactory.getInstance().createLandscape(rset);
-	}
+
 
 	public Landscape createLandscape() throws Exception {
 		this.currentId++;
@@ -126,11 +125,7 @@ public class LandscapeManager extends ObjectManager {
 		addLandscape(result);
 		return result;
 	}
-
-	/*******************************************************************************************************/
-
-	/************************* Serializer-Collaboration: "Client" role methods ***************************************/
-
+	
 	public void saveLandscape(Landscape landscape) {
 		try {
 			PreparedStatement stmt = getUpdatingStatement("SELECT * FROM landscapes WHERE id = ?");
@@ -191,6 +186,15 @@ public class LandscapeManager extends ObjectManager {
 		SysLog.logSysInfo("loaded all landscapes");
 		return landscapeCache.values();
 
+	}
+
+	/*******************************************************************************************************/
+
+	/************************* Serializer-Collaboration: "Client" role methods ***************************************/
+	
+	@Override
+	protected Persistent createObject(ResultSet rset) throws SQLException {
+		return LandscapePhotoFactory.getInstance().createLandscape(rset);
 	}
 	/************************************************************ ++ ***************************************/
 }

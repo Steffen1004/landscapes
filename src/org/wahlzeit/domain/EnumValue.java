@@ -9,10 +9,12 @@ package org.wahlzeit.domain;
  *
  */
 
-public interface EnumValue {	
-	
+public interface EnumValue {
+
 	public String asString();
+
 	public EnumValue[] getAllValues();
+
 	public String getTypeName();
-	
+
 }

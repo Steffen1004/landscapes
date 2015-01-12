@@ -17,14 +17,15 @@ CREATE TABLE users (
 
 CREATE TABLE landscapes(
 	id integer PRIMARY KEY,
+	name text,
+	filter text,
 	mountains boolean,
 	beach boolean,
 	countryside boolean,
 	dessert boolean,
 	steppe boolean,
 	ocean boolean,
-	forest boolean,
-	filter text
+	forest boolean
 	);
 
 CREATE TABLE photos (
@@ -78,5 +79,5 @@ INSERT INTO globals (id, last_user_id, last_photo_id, last_case_id, last_session
 INSERT INTO users (id, name, name_as_tag, email_address, "password", rights, status)
 	VALUES (1, 'admin', 'admin', 'root@localhost', 'admin', 4, 1);
 
-INSERT INTO landscapes(id, mountains, beach, countryside, dessert, steppe, ocean, forest, filter)
-	VALUES(-1, 'mountains', 'beach', 'countryside', 'dessert', 'steppe', 'ocean', 'forest', 'filter');
+INSERT INTO landscapes(id, name, filter)
+	VALUES(-1,'NONE','UV_FILTER' );

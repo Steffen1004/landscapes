@@ -115,7 +115,7 @@ public class AdminUserPhotoFormHandler extends AbstractWebFormHandler {
 		if(photo instanceof LandscapePhoto){
 		try{	
 			String landscapeID = us.getAndSaveAsString(args, "landscape_id");
-			
+			String name = us.getAndSaveAsString(args, "name");	
 			boolean mountain = Boolean.parseBoolean(us.getAndSaveAsString(args, "mountains"));
 			boolean dessert = Boolean.parseBoolean(us.getAndSaveAsString(args, "dessert"));
 			boolean ocean = Boolean.parseBoolean(us.getAndSaveAsString(args, "ocean"));
@@ -129,6 +129,7 @@ public class AdminUserPhotoFormHandler extends AbstractWebFormHandler {
 			
 			LandscapeManager lm = LandscapeManager.getInstance();
 			Landscape landscape = lm.createLandscape();
+			landscape.setName(name);
 			landscape.getType().setLandscapeStyle(landscapeStyle);
 			landscape.getType().setLandscapePhotoFilterEnum(filter);
 			

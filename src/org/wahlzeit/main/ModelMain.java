@@ -44,7 +44,7 @@ public abstract class ModelMain extends AbstractMain {
 	 */
 	protected void startUp(String rootDir) throws Exception {
 		super.startUp(rootDir);
-
+		
 		if (!hasGlobals()) {
 			tearDownDatabase();
 			setUpDatabase();

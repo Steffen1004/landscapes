@@ -1,11 +1,14 @@
 package org.wahlzeit.domain;
 
 /**
- * LandscapeType is the "Type Object" for landscape. 
- *
+ * 
+ * Type Object Collaboration: LandscapeType is the "Type Object" for landscape
+ * with the purpose to provide descriptive information common to all instances
+ * of a type.
+ * 
  * @author Steffen Loskarn
- * @version 1.0
- * @date 14.11.2014
+ * @version 2.0
+ * @date 12.12.2014
  *
  */
 
@@ -18,57 +21,61 @@ public class LandscapeType {
 	 * 
 	 * @methodtype constructor
 	 */
-	public LandscapeType()
-	{}
-	
-	/**
-	 *
-	 * @methodtype get method
-	 */
-	public LandscapeStyle getLandscapeStyle(){
-		return this.landscapeStyle;
-	}
-	
-	/**
-	 *
-	 * @methodtype set method
-	 */
-	public void setLandscapeStyle(LandscapeStyle landscapeStyle){
-		//precondition
-		if(landscapeStyle == null)
-		{
-			throw new IllegalArgumentException();
-		}
-		
-		this.landscapeStyle = landscapeStyle;
-		
-		//postcondition
-		assert landscapeStyle == this.landscapeStyle;			
+	public LandscapeType() {
 	}
 
-	
+	/****************
+	 * Type Object Collaboration: “Type Object” methods for getting and setting
+	 * the values
+	 ******************/
 	/**
-	 *
+	 * 
+	 * @return LandscapeStyle
 	 * @methodtype get method
 	 */
-	public LandscapePhotoFilterEnum getLandscapePhotoFilterEnum(){
-		return this.filter;
+	public LandscapeStyle getLandscapeStyle() {
+		return this.landscapeStyle;
 	}
-	
+
 	/**
 	 *
 	 * @methodtype set method
 	 */
-	public void setLandscapePhotoFilterEnum(LandscapePhotoFilterEnum filter){
-		//precondition
-		if(filter == null)
-		{
+	public void setLandscapeStyle(LandscapeStyle landscapeStyle) {
+		// precondition
+		if (landscapeStyle == null) {
 			throw new IllegalArgumentException();
 		}
-		
-		this.filter = filter;
-		
-		//postcondition
-		assert filter == this.filter;			
+
+		this.landscapeStyle = landscapeStyle;
+
+		// postcondition
+		assert landscapeStyle == this.landscapeStyle;
 	}
+
+	/**
+	 *
+	 * @return LandscapePhotoFilterEnum
+	 * @methodtype get method
+	 */
+	public LandscapePhotoFilterEnum getLandscapePhotoFilterEnum() {
+		return this.filter;
+	}
+
+	/**
+	 *
+	 * @methodtype set method
+	 */
+	public void setLandscapePhotoFilterEnum(LandscapePhotoFilterEnum filter) {
+		// precondition
+		if (filter == null) {
+			throw new IllegalArgumentException();
+		}
+
+		this.filter = filter;
+
+		// postcondition
+		assert filter == this.filter;
+	}
+	/***********************************************************************************************************/
 }

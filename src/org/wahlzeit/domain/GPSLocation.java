@@ -15,47 +15,46 @@ import com.mapcode.Point;
 import com.mapcode.UnknownMapcodeException;
 
 public class GPSLocation extends AbstractLocation implements Location {
-	
-	private double latitude; 
+
+	private double latitude;
 	private double longitude;
-	
+
 	/**
 	 * Initializes a new GPSLocation.
 	 * 
 	 * @methodtype constructor
 	 * @param
 	 */
-	public GPSLocation(){
-		this.latitude =  0.0;
+	public GPSLocation() {
+		this.latitude = 0.0;
 		this.longitude = 0.0;
 	}
-	
+
 	/**
 	 * Initializes a new GPSLocation.
 	 * 
 	 * @methodtype constructor
-	 * @param double latitude
-	 * 		  double longitude
+	 * @param double latitude double longitude
 	 */
-	public GPSLocation(double latitude,double longitude){
-		assertIsValidLocation(latitude, longitude);	
-		initialize(latitude,longitude);
+	public GPSLocation(double latitude, double longitude) {
+		assertIsValidLocation(latitude, longitude);
+		initialize(latitude, longitude);
 	}
-	
+
 	/**
 	 * 
 	 * @methodtype initialization
 	 */
-	protected void initialize(double latitude, double longitude){
-		this.latitude= latitude;
+	protected void initialize(double latitude, double longitude) {
+		this.latitude = latitude;
 		this.longitude = longitude;
 	}
 
-	
 	/**
-	 * @methodtype assertion 
+	 * @methodtype assertion
 	 */
-	protected static void assertIsValidLocation(double latitude, double longitude) {
+	protected static void assertIsValidLocation(double latitude,
+			double longitude) {
 		if (latitude < -180 || latitude > 180) {
 			throw new IllegalArgumentException("Not a valid latitude!");
 		}
@@ -63,18 +62,20 @@ public class GPSLocation extends AbstractLocation implements Location {
 			throw new IllegalArgumentException("Not a valid longitude!");
 		}
 	}
-	
+
 	@Override
 	/**
 	 * Sets the location(latitude, longitude).
 	 * @methodtype set
 	 */
 	public void doSetLocation(double latitude, double longitude) {
-		initialize(latitude,longitude);
+		initialize(latitude, longitude);
 	}
 
 	/**
 	 * Gets the latitude of the location.
+	 *
+	 * @return double
 	 * @methodtype get
 	 */
 	public double getLatitude() {
@@ -83,6 +84,8 @@ public class GPSLocation extends AbstractLocation implements Location {
 
 	/**
 	 * Gets the longitude of the location.
+	 *
+	 * @return double 
 	 * @methodtype get
 	 */
 	public double getLongitude() {
@@ -92,25 +95,30 @@ public class GPSLocation extends AbstractLocation implements Location {
 	@Override
 	/**
 	 * Checks if the photo has an location.
+	 * 
+	 * @return double 
 	 * @methodtype boolean query method
 	 */
 	public boolean hasLocation() {
-		if(this.latitude == 0.0 && this.longitude == 0.0)
-		return false;
+		if (this.latitude == 0.0 && this.longitude == 0.0)
+			return false;
 		else
-		return true;
+			return true;
 	}
 
 	@Override
 	/**
 	 * Gets the mapcode of the location.
+	 * 
+	 * @return String 
 	 * @methodtype get
 	 */
 	public String getMapcode() {
-		Mapcode mapcode = MapcodeCodec.encodeToInternational( this.latitude,this.longitude);
-		return mapcode.toString();	
+		Mapcode mapcode = MapcodeCodec.encodeToInternational(this.latitude,
+				this.longitude);
+		return mapcode.toString();
 	}
-	
+
 	@Override
 	/**
 	 * Sets the mapcode as location of a photo.
@@ -122,30 +130,31 @@ public class GPSLocation extends AbstractLocation implements Location {
 			point = MapcodeCodec.decode(mapcode);
 			this.latitude = point.getLatDeg();
 			this.longitude = point.getLonDeg();
-		}
-		catch(UnknownMapcodeException e)
-		{
+		} catch (UnknownMapcodeException e) {
 			e.printStackTrace();
-		}	
+		}
 	}
 
 	@Override
 	/**
 	 * Returns a simple readable discription of the location.
+	 * 
 	 * @return String
 	 * @methodtype get
 	 */
 	public String asString() {
-		return this.latitude+ " " +this.longitude  ;
+		return this.latitude + " " + this.longitude;
 	}
 
 	@Override
 	/**
 	 * Checks if the photo has an location.
+	 *
+	 * @return boolean 
 	 * @methodtype boolean query method
 	 */
 	public boolean isEqual(double latitude, double longitude) {
-		if(this.latitude == latitude && this.longitude==longitude)
+		if (this.latitude == latitude && this.longitude == longitude)
 			return true;
 		else
 			return false;

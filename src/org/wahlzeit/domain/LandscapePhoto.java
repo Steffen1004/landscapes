@@ -1,7 +1,8 @@
 package org.wahlzeit.domain;
 
 /**
- * Landscape Photo. 
+ * Landscape/ Landscape Photo Collaboration: LandscapePhoto has the Client role, which gets 
+ * the main domain functionality from Landscape.
  *
  * @author Steffen Loskarn
  * @version 2.0
@@ -16,8 +17,10 @@ import java.sql.SQLException;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoId;
 
-public class LandscapePhoto extends Photo{
+public class LandscapePhoto extends Photo {
 
+	public static final String ID = "landscape_id";
+	public static final String NAME = "name";
 	public static final String TYPE = "type";
 	public static final String MOUNTAINS = "mountains";
 	public static final String BEACH = "beach";
@@ -27,92 +30,96 @@ public class LandscapePhoto extends Photo{
 	public static final String OCEAN = "ocean";
 	public static final String FOREST = "forest";
 	public static final String FILTER = "filter";
-	
+
+	/* Landscape/ Landscape Photo Collaboration: Domain Object */
 	protected Landscape landscape;
-	
 
 	/**
 	 * 
 	 * @methodtype constructor
 	 */
-	public LandscapePhoto(){
+	public LandscapePhoto() {
 		super();
 		initialize();
 	}
-	
+
 	/**
 	 * 
 	 * @methodtype constructor
 	 */
-	public LandscapePhoto(PhotoId id){
+	public LandscapePhoto(PhotoId id) {
 		super(id);
 		initialize();
 	}
-	
+
 	/**
 	 * 
 	 * @methodtype constructor
 	 */
 	public LandscapePhoto(ResultSet rset) throws SQLException {
-//		readFrom(rset);
+		// readFrom(rset);
 		super(rset);
 	}
-	
+
 	/**
 	 * 
-	 *@methodtype initialization 
+	 * @methodtype initialization
 	 */
-	protected void initialize(){
+	protected void initialize() {
 		this.landscape = LandscapeManager.getInstance().getLandscapeFromId(-1);
 	}
-	
+
 	/**
 	 * 
-	 *@methodtype initialization 
+	 * @methodtype initialization
 	 */
 	@Override
 	public void readFrom(ResultSet rset) throws SQLException {
 		super.readFrom(rset);
-		
-		this.landscape = LandscapeManager.getInstance().getLandscapeFromId(rset.getInt("landscape_id"));
+
+		this.landscape = LandscapeManager.getInstance().getLandscapeFromId(
+				rset.getInt("landscape_id"));
 	}
-	
+
+	/**
+	 * 
+	 * @methodtype command method
+	 */
+	@Override
+	public void writeOn(ResultSet rset) throws SQLException {
+		super.writeOn(rset);
+
+		rset.updateInt("landscape_id", this.landscape.getId());
+	}
+
+	/************************* Landscape/ Landscape Photo Collaboration: “Client” role methods ********************************/
+
 	/**
 	 *
+	 * @return Landscape
 	 * @methodtype get method
 	 */
 	public Landscape getLandscape() {
 		return this.landscape;
 	}
-	
+
 	/**
 	 *
 	 * @methodtype set method
 	 */
-	public void setLandscape(Landscape landscape)
-	{
-		//precondition
-		if(landscape == null)
-		{
+	public void setLandscape(Landscape landscape) {
+		// precondition
+		if (landscape == null) {
 			throw new IllegalArgumentException();
 		}
-		
-		this.landscape=landscape;
+
+		this.landscape = landscape;
 		incWriteCount();
-		
-		//postcondition
-		assert(this.landscape.equals(landscape));
+
+		// postcondition
+		assert (this.landscape.equals(landscape));
 	}
-	
-	/**
-	 * 
-	 *@methodtype command method  
-	 */
-	@Override
-	public void writeOn(ResultSet rset) throws SQLException {
-		super.writeOn(rset);
-		
-		rset.updateInt("landscape_id", this.landscape.getId());
-	}
-	
+
+	/********************************************************************************************************************/
+
 }

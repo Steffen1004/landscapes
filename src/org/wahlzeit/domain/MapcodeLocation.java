@@ -17,48 +17,46 @@ import com.mapcode.Point;
 import com.mapcode.Territory;
 import com.mapcode.UnknownMapcodeException;
 
-public class MapcodeLocation extends AbstractLocation implements Location{
-	
+public class MapcodeLocation extends AbstractLocation implements Location {
+
 	private double longitude;
 	private double latitude;
-	private String mapcode; //contains the mapcode information i.e. "NLD 49.v4"
+	private String mapcode; // contains the mapcode information i.e. "NLD 49.v4"
 
 	/**
 	 * Initializes a new MapcodeLocation.
 	 * 
-	 * @methodtype constructor 
+	 * @methodtype constructor
 	 * @param
 	 */
-	public MapcodeLocation(){
-		this.mapcode="";
+	public MapcodeLocation() {
+		this.mapcode = "";
 		initialize(mapcode);
 	}
-	
+
 	/**
 	 * Initializes a new MapcodeLocation.
-	 * 
-	 * @methodtype constructor 
-	 * @param String param
+	 *
+	 * @return MapcodeLocation
+	 * @methodtype constructor
 	 */
-	public MapcodeLocation(String mapcode){
+	public MapcodeLocation(String mapcode) {
 		assertIsValidLocation(mapcode);
-		this.mapcode=mapcode;
+		this.mapcode = mapcode;
 		initialize(mapcode);
 	}
-	
+
 	/**
 	 * 
 	 * @methodtype initialization
 	 */
-	protected void initialize(String mapcode){
+	protected void initialize(String mapcode) {
 		Point point;
 		try {
-			point = MapcodeCodec.decode(mapcode);	
+			point = MapcodeCodec.decode(mapcode);
 			this.latitude = point.getLatDeg();
 			this.longitude = point.getLonDeg();
-		}
-		catch(UnknownMapcodeException e)
-		{
+		} catch (UnknownMapcodeException e) {
 			e.printStackTrace();
 		}
 	}
@@ -69,29 +67,30 @@ public class MapcodeLocation extends AbstractLocation implements Location{
 	 * @methodtype set
 	 */
 	public void doSetLocation(double latitude, double longitude) {
-		this.longitude= longitude;
+		this.longitude = longitude;
 		this.latitude = latitude;
 	}
 
-	
 	/**
-	 * @methodtype assertion 
+	 * @methodtype assertion
 	 */
 	protected static void assertIsValidLocation(String mapcode) {
 		if (mapcode == null) {
 			throw new IllegalArgumentException("Not a valid location!");
 		}
 	}
-    
+
 	@Override
 	/**
 	 * Checks if the photo has an location.
+	 *
+	 * @return boolean
 	 * @methodtype boolean query method
 	 */
-	public boolean hasLocation() {	
-		if(this.mapcode == "")
+	public boolean hasLocation() {
+		if (this.mapcode == "")
 			return false;
-		else 
+		else
 			return true;
 	}
 
@@ -108,9 +107,7 @@ public class MapcodeLocation extends AbstractLocation implements Location{
 			point = MapcodeCodec.decode(mapcode);
 			this.latitude = point.getLatDeg();
 			this.longitude = point.getLonDeg();
-		}
-		catch(UnknownMapcodeException e)
-		{
+		} catch (UnknownMapcodeException e) {
 			e.printStackTrace();
 		}
 	}
@@ -118,6 +115,8 @@ public class MapcodeLocation extends AbstractLocation implements Location{
 	@Override
 	/**
 	 * Gets the mapcode of the location.
+	 *
+	 * @return String
 	 * @methodtype get
 	 */
 	public String getMapcode() {
@@ -127,15 +126,18 @@ public class MapcodeLocation extends AbstractLocation implements Location{
 	@Override
 	/**
 	 * Returns a simple readable discription of the location.
+	 * 
 	 * @return String
 	 * @methodtype get
 	 */
 	public String asString() {
 		return mapcode;
 	}
-	
+
 	/**
 	 * Gets the latitude of the location.
+	 * 
+	 * @return double 
 	 * @methodtype get
 	 */
 	public double getLatitude() {
@@ -144,6 +146,8 @@ public class MapcodeLocation extends AbstractLocation implements Location{
 
 	/**
 	 * Gets the longitude of the location.
+	 *
+	 * @return double
 	 * @methodtype get
 	 */
 	public double getLongitude() {
@@ -151,9 +155,16 @@ public class MapcodeLocation extends AbstractLocation implements Location{
 	}
 
 	@Override
+	/**
+	 *
+	 * @return boolean
+	 * @methodtype comparison
+	 */
 	public boolean isEqual(double latitude, double longitude) {
-		// TODO Auto-generated method stub
+		if(latitude==this.latitude && longitude==this.longitude)
+		return true;
+		else
 		return false;
 	}
-	
+
 }

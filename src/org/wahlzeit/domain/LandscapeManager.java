@@ -196,5 +196,5 @@ public class LandscapeManager extends ObjectManager {
 	protected Persistent createObject(ResultSet rset) throws SQLException {
 		return LandscapePhotoFactory.getInstance().createLandscape(rset);
 	}
-	/************************************************************ ++ ***************************************/
+	/***************************************************************************************************/
 }

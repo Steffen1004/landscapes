@@ -16,7 +16,9 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type;
  * Landscape/ LandscapePhoto Collaboration: Landscape is the "Domain Object"
  * with the purpose to provide main domain functionality.
  * 
- * Manager Collaboration:
+ * Manager Collaboration: Domain Object
+ * 
+ * Factory-Collaboration: Concrete Product: defines a product object to be created by the corresponding concrete factory.
  *
  * @author Steffen Loskarn
  * @version 2.0
@@ -25,12 +27,15 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type;
  */
 
 public class Landscape extends DataObject {
-
+	
+	/* Manager Collaboration: Domain Object */
 	private Integer id;
+	/****************************************/
 	private String name;
 
 	/* Type Object Collaboration: Type Object */
-	private LandscapeType type = new LandscapeType();;
+	private LandscapeType type = new LandscapeType();
+	/****************************************/
 
 	/**
 	 * 
@@ -114,10 +119,8 @@ public class Landscape extends DataObject {
 		return "ID: " + this.id + ", Name: " + this.getName();
 	}
 
-	/*************************
-	 * Type Object Collaboration: “Base Object” methods + Landscape/
-	 * LandscapePhoto Collaboration: "Domain Object" methods
-	 *********************/
+	/*************************Type Object Collaboration: “Base Object” methods +
+	 *  Landscape/ LandscapePhoto Collaboration: "Domain Object" methods *********************/
 	/**
 	 *
 	 * @methodtype get method
@@ -144,6 +147,7 @@ public class Landscape extends DataObject {
 
 	/********************************************************************************************************************/
 
+	/***************** Collaboration: Serializer*****************************************************************/
 	@Override
 	/**
 	 * 
@@ -196,5 +200,5 @@ public class Landscape extends DataObject {
 	public void writeId(PreparedStatement stmt, int pos) throws SQLException {
 		stmt.setInt(pos, this.id);
 	}
-
+	/********************************************************************************************************************/
 }

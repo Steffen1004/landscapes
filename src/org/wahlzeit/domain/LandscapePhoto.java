@@ -68,6 +68,8 @@ public class LandscapePhoto extends Photo {
 	protected void initialize() {
 		this.landscape = LandscapeManager.getInstance().getLandscapeFromId(-1);
 	}
+	
+	/************************* Collaboration Serliazer ********************************/
 
 	/**
 	 * 
@@ -91,7 +93,7 @@ public class LandscapePhoto extends Photo {
 
 		rset.updateInt("landscape_id", this.landscape.getId());
 	}
-
+	/********************************************************************************************************************/
 	/************************* Landscape/ Landscape Photo Collaboration: “Client” role methods ********************************/
 
 	/**

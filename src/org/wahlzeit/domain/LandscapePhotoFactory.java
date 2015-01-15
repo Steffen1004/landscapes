@@ -10,6 +10,7 @@ import org.wahlzeit.services.SysLog;
 
 /**
  * Landscape photo factory.
+ * Factory-Collaboration: Concrete Factory: implements operation to create Landscapes
  *
  * @author Steffen Loskarn
  * @version 2.0
@@ -63,6 +64,7 @@ public class LandscapePhotoFactory extends PhotoFactory {
 		super();
 	}
 
+	/*******************************Factory-Collaboration: Concrete Factory************************************/
 	/**
 	 *
 	 * @return Landscape
@@ -80,31 +82,5 @@ public class LandscapePhotoFactory extends PhotoFactory {
 	public Landscape createLandscape(ResultSet rset) throws SQLException {
 		return new Landscape(rset);
 	}
-
-	/**
-	 *
-	 * @return Photo
-	 * @methodtype factory
-	 */
-	public Photo createPhoto() {
-		return new LandscapePhoto();
-	}
-
-	/**
-	 * 
-	 * @return Photo
-	 * @methodtype factory
-	 */
-	public Photo createPhoto(PhotoId id) {
-		return new LandscapePhoto(id);
-	}
-
-	/**
-	 * 
-	 * @return Photo
-	 * @methodtype factory
-	 */
-	public Photo createPhoto(ResultSet rs) throws SQLException {
-		return new LandscapePhoto(rs);
-	}
+	/************************************************************************/
 }

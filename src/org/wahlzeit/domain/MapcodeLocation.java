@@ -28,8 +28,9 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 	 * 
 	 * @methodtype constructor
 	 * @param
+	 * @throws LocationException 
 	 */
-	public MapcodeLocation() {
+	public MapcodeLocation() throws LocationException {
 		this.mapcode = "";
 		initialize(mapcode);
 	}
@@ -38,9 +39,10 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 	 * Initializes a new MapcodeLocation.
 	 *
 	 * @return MapcodeLocation
+	 * @throws LocationException 
 	 * @methodtype constructor
 	 */
-	public MapcodeLocation(String mapcode) {
+	public MapcodeLocation(String mapcode) throws LocationException {
 		assertIsValidLocation(mapcode);
 		this.mapcode = mapcode;
 		initialize(mapcode);
@@ -48,9 +50,10 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 
 	/**
 	 * 
+	 * @throws LocationException 
 	 * @methodtype initialization
 	 */
-	protected void initialize(String mapcode) {
+	protected void initialize(String mapcode) throws LocationException {
 		Point point;
 		try {
 			point = MapcodeCodec.decode(mapcode);
@@ -58,6 +61,7 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 			this.longitude = point.getLonDeg();
 		} catch (UnknownMapcodeException e) {
 			e.printStackTrace();
+			throw new LocationException("Mapcode couldn't be converted to GPS coordinates");
 		}
 	}
 
@@ -72,11 +76,12 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 	}
 
 	/**
+	 * @throws LocationException 
 	 * @methodtype assertion
 	 */
-	protected static void assertIsValidLocation(String mapcode) {
+	protected static void assertIsValidLocation(String mapcode) throws LocationException {
 		if (mapcode == null) {
-			throw new IllegalArgumentException("Not a valid location!");
+			throw new LocationException("Mapcode is not a valid location!");
 		}
 	}
 
@@ -99,7 +104,7 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 	 * Sets the mapcode as location of a photo.
 	 * @methodtype set
 	 */
-	public void setMapcode(String mapcode) {
+	public void setMapcode(String mapcode) throws LocationException {
 		assertIsValidLocation(mapcode);
 		this.mapcode = mapcode;
 		Point point;
@@ -109,6 +114,7 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 			this.longitude = point.getLonDeg();
 		} catch (UnknownMapcodeException e) {
 			e.printStackTrace();
+			throw new LocationException("Mapcode couldn't be converted to GPS coordinates");
 		}
 	}
 

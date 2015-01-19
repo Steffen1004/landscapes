@@ -37,6 +37,7 @@ public class Landscape extends DataObject {
 	private LandscapeType type = new LandscapeType();
 	/****************************************/
 
+	/*******************Manager Collaboration: Domain Object*************************************************************/
 	/**
 	 * 
 	 * @methodtype constructor
@@ -64,6 +65,8 @@ public class Landscape extends DataObject {
 		this.readFrom(rset);
 	}
 
+	/********************************************************************************************************************/
+	
 	/********************** Landscape/ LandscapePhoto Collaboration: "Domain Object" methods ****************************/
 	/**
 	 *
@@ -90,7 +93,7 @@ public class Landscape extends DataObject {
 	public void setName(String name) {
 		// precondition
 		if (name == "") {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Name must not be null");
 		}
 
 		this.name = name;

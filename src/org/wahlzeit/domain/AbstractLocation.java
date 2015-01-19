@@ -13,10 +13,11 @@ public abstract class AbstractLocation implements Location {
 
 	/**
 	 * Sets the mapcode as location of a photo.
+	 * @throws LocationException 
 	 * 
 	 * @methodtype set
 	 */
-	public abstract void setMapcode(String mapcode);
+	public abstract void setMapcode(String mapcode) throws LocationException;
 
 	/**
 	 * Gets the mapcode of the location.

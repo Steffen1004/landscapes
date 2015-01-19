@@ -44,10 +44,11 @@ public interface Location {
 
 	/**
 	 * Sets the mapcode as location of a photo.
+	 * @throws LocationException 
 	 * 
 	 * @methodtype set
 	 */
-	public void setMapcode(String mapcode);
+	public void setMapcode(String mapcode) throws LocationException;
 
 	/**
 	 * Sets the location(latitude, longitude).

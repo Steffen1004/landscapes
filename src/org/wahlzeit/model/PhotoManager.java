@@ -138,7 +138,6 @@ public class PhotoManager extends ObjectManager {
 	 * 
 	 */
 	protected Photo createObject(ResultSet rset) throws SQLException {
-//		return PhotoFactory.getInstance().createPhoto(rset);
 		return LandscapePhotoFactory.getInstance().createPhoto(rset);
 	}
 	

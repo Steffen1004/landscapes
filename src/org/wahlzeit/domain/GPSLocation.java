@@ -9,6 +9,9 @@ package org.wahlzeit.domain;
  *
  */
 
+import org.wahlzeit.services.Log;
+import org.wahlzeit.services.SysLog;
+
 import com.mapcode.Mapcode;
 import com.mapcode.MapcodeCodec;
 import com.mapcode.Point;
@@ -35,8 +38,9 @@ public class GPSLocation extends AbstractLocation implements Location {
 	 * 
 	 * @methodtype constructor
 	 * @param double latitude double longitude
+	 * @throws LocationException 
 	 */
-	public GPSLocation(double latitude, double longitude) {
+	public GPSLocation(double latitude, double longitude) throws LocationException {
 		assertIsValidLocation(latitude, longitude);
 		initialize(latitude, longitude);
 	}
@@ -51,15 +55,16 @@ public class GPSLocation extends AbstractLocation implements Location {
 	}
 
 	/**
+	 * @throws LocationException 
 	 * @methodtype assertion
 	 */
 	protected static void assertIsValidLocation(double latitude,
-			double longitude) {
-		if (latitude < -180 || latitude > 180) {
-			throw new IllegalArgumentException("Not a valid latitude!");
+			double longitude) throws LocationException {
+		if (latitude < -90 || latitude > 90) {
+			throw new LocationException("Not a valid latitude! Range 90° - (-90°)");
 		}
 		if (longitude < -180 || longitude > 180) {
-			throw new IllegalArgumentException("Not a valid longitude!");
+			throw new LocationException("Not a valid longitude! Range 180° - (-180°)");
 		}
 	}
 
@@ -124,7 +129,7 @@ public class GPSLocation extends AbstractLocation implements Location {
 	 * Sets the mapcode as location of a photo.
 	 * @methodtype set
 	 */
-	public void setMapcode(String mapcode) {
+	public void setMapcode(String mapcode) throws LocationException {
 		Point point;
 		try {
 			point = MapcodeCodec.decode(mapcode);
@@ -132,6 +137,7 @@ public class GPSLocation extends AbstractLocation implements Location {
 			this.longitude = point.getLonDeg();
 		} catch (UnknownMapcodeException e) {
 			e.printStackTrace();
+			throw new LocationException("Mapcode couldn't be converted to GPS coordinates");
 		}
 	}
 

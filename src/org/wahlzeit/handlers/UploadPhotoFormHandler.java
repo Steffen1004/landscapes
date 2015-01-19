@@ -31,6 +31,7 @@ import org.wahlzeit.domain.LandscapeStyle;
 import org.wahlzeit.domain.LandscapePhotoFilterEnum;
 import org.wahlzeit.domain.LandscapeType;
 import org.wahlzeit.domain.Location;
+import org.wahlzeit.domain.LocationException;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
@@ -70,28 +71,30 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 		double lat = 0.0;
 		double lon = 0.0;
 
-		try {
-			lat = Double.parseDouble(us.getAndSaveAsString(args, Photo.LAT));
-			lon = Double.parseDouble(us.getAndSaveAsString(args, Photo.LON));
-		} catch (Exception e) {
-			lat = 0.0;
-			lon = 0.0;
-		}
 
-		String mapcode = us.getAndSaveAsString(args, Photo.MAPCODE);
-		Location location;
-		location = new GPSLocation(lat, lon);
-
-		if (lat == 0.0 && lon == 0.0 && mapcode != "") {
-			location.setMapcode(mapcode);
-		}
-
-		if (!StringUtil.isLegalTagsString(tags)) {
-			us.setMessage(us.cfg().getInputIsInvalid());
-			return PartUtil.UPLOAD_PHOTO_PAGE_NAME;
-		}
 
 		try {
+			try {
+				lat = Double.parseDouble(us.getAndSaveAsString(args, Photo.LAT));
+				lon = Double.parseDouble(us.getAndSaveAsString(args, Photo.LON));
+			} catch (Exception e) {
+				lat = 0.0;
+				lon = 0.0;
+			}
+
+			String mapcode = us.getAndSaveAsString(args, Photo.MAPCODE);
+			Location location;
+			location = new GPSLocation(lat, lon);
+
+			if (lat == 0.0 && lon == 0.0 && mapcode != "") {
+				location.setMapcode(mapcode);
+			}
+
+			if (!StringUtil.isLegalTagsString(tags)) {
+				us.setMessage(us.cfg().getInputIsInvalid());
+				return PartUtil.UPLOAD_PHOTO_PAGE_NAME;
+			}
+			
 			PhotoManager pm = PhotoManager.getInstance();
 			String sourceFileName = us.getAsString(args, "fileName");
 			File file = new File(sourceFileName);
@@ -118,6 +121,9 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 
 			us.setTwoLineMessage(us.cfg().getPhotoUploadSucceeded(), us.cfg()
 					.getKeepGoing());
+		} catch(LocationException locEx) {
+			SysLog.logThrowable(locEx);
+			us.setMessage(us.cfg().getPhotoUploadFailedLocation());
 		} catch (Exception ex) {
 			SysLog.logThrowable(ex);
 			us.setMessage(us.cfg().getPhotoUploadFailed());

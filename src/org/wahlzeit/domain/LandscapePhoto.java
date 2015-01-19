@@ -57,8 +57,13 @@ public class LandscapePhoto extends Photo {
 	 * @methodtype constructor
 	 */
 	public LandscapePhoto(ResultSet rset) throws SQLException {
-		// readFrom(rset);
 		super(rset);
+		try{
+			assert !rset.isClosed();
+		} catch(Exception e) {
+			throw new RuntimeException("ResultSet is closed!");
+		}
+		
 	}
 
 	/**
@@ -112,7 +117,7 @@ public class LandscapePhoto extends Photo {
 	public void setLandscape(Landscape landscape) {
 		// precondition
 		if (landscape == null) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Landscape must not be null");
 		}
 
 		this.landscape = landscape;

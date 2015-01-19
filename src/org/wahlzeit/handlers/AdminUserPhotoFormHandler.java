@@ -29,7 +29,9 @@ import org.wahlzeit.domain.LandscapePhoto;
 import org.wahlzeit.domain.LandscapePhotoFilterEnum;
 import org.wahlzeit.domain.LandscapeStyle;
 import org.wahlzeit.domain.Location;
+import org.wahlzeit.domain.LocationException;
 import org.wahlzeit.model.*;
+import org.wahlzeit.services.SysLog;
 import org.wahlzeit.webparts.*;
 
 /**
@@ -90,13 +92,18 @@ public class AdminUserPhotoFormHandler extends AbstractWebFormHandler {
 		
 		String mapcode = us.getAndSaveAsString(args, Photo.MAPCODE);
 		Location location;
-		location = new GPSLocation(lat, lon);
-		
-		if(lat == 0.0 && lon == 0.0 && mapcode != "") {
-			location.setMapcode(mapcode);
+		try {
+			location = new GPSLocation(lat, lon);
+			
+			if(lat == 0.0 && lon == 0.0 && mapcode != "") {
+				location.setMapcode(mapcode);
+			}
+			photo.setLocation(location);
+		} catch (LocationException locEx) {
+			SysLog.logThrowable(locEx);
+			us.setMessage(us.cfg().getPhotoUploadFailedLocation());	
 		}
-		photo.setLocation(location);
-		
+	
 		doHandleLandscapePhotoPost( photo, us, args);
 		
 		PhotoManager pm = PhotoManager.getInstance();

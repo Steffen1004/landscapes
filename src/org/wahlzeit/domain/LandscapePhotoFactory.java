@@ -43,8 +43,7 @@ public class LandscapePhotoFactory extends PhotoFactory {
 	protected static synchronized void setInstance(
 			LandscapePhotoFactory landscapePhotoFactory) {
 		if (instance != null) {
-			throw new IllegalStateException(
-					"attempt to initalize LandscapePhotoFactory twice");
+			throw new IllegalStateException("attempt to initalize LandscapePhotoFactory twice");
 		}
 
 		instance = landscapePhotoFactory;
@@ -80,6 +79,9 @@ public class LandscapePhotoFactory extends PhotoFactory {
 	 * @methodtype factory
 	 */
 	public Landscape createLandscape(ResultSet rset) throws SQLException {
+		if (rset == null)
+			throw new IllegalArgumentException("ResultSet is invalid");
+		
 		return new Landscape(rset);
 	}
 	/************************************************************************/

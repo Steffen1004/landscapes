@@ -25,6 +25,7 @@ import java.net.*;
 
 import org.wahlzeit.domain.GPSLocation;
 import org.wahlzeit.domain.Location;
+import org.wahlzeit.domain.LocationException;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
 
@@ -151,6 +152,7 @@ public class Photo extends DataObject {
 	}
 	
 	/**
+	 * @throws LocationException 
 	 * 
 	 */
 	public void readFrom(ResultSet rset) throws SQLException {
@@ -177,8 +179,12 @@ public class Photo extends DataObject {
 		
 		double latitude = rset.getDouble("lat");
 		double longitude = rset.getDouble("lon");
+		try{
 		location = new GPSLocation(latitude, longitude);
-
+		} catch(LocationException e) {
+					latitude = 0.0;
+					longitude = 0.0;
+		}
 		maxPhotoSize = PhotoSize.getFromWidthHeight(width, height);
 	}
 	

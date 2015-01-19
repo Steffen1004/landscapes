@@ -47,10 +47,10 @@ public class LandscapeStyle {
 	 *
 	 * @methodtype set method
 	 */
-	public void setMountain(boolean mountain) throws RuntimeException {
+	public void setMountain(boolean mountain) throws IllegalArgumentException {
 
 		if (mountain && this.ocean)
-			throw new RuntimeException("The invariant was violated");
+			throw new IllegalArgumentException("The invariant: You must not mix type: mountain and ocean, was violated");
 
 		this.mountain = mountain;
 
@@ -64,7 +64,7 @@ public class LandscapeStyle {
 	public void setForest(boolean forest) throws RuntimeException {
 
 		if (this.dessert && forest)
-			throw new RuntimeException("The invariant was violated");
+			throw new RuntimeException("The invariant: You must not mix type: forest and dessert,  was violated");
 
 		this.forest = forest;
 
@@ -78,7 +78,7 @@ public class LandscapeStyle {
 	public void setDessert(boolean dessert) throws RuntimeException {
 
 		if (dessert && this.forest)
-			throw new RuntimeException("The invariant was violated");
+			throw new RuntimeException("The invariant: You must not mix type: forest and dessert, was violated");
 
 		this.dessert = dessert;
 

@@ -24,10 +24,7 @@ public class LandscapeType {
 	public LandscapeType() {
 	}
 
-	/****************
-	 * Type Object Collaboration: “Type Object” methods for getting and setting
-	 * the values
-	 ******************/
+	/**************** Type Object Collaboration: “Type Object” methods for getting and setting the values ******************/
 	/**
 	 * 
 	 * @return LandscapeStyle
@@ -44,7 +41,7 @@ public class LandscapeType {
 	public void setLandscapeStyle(LandscapeStyle landscapeStyle) {
 		// precondition
 		if (landscapeStyle == null) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("LandscapeStyle is not valid");
 		}
 
 		this.landscapeStyle = landscapeStyle;
@@ -69,7 +66,7 @@ public class LandscapeType {
 	public void setLandscapePhotoFilterEnum(LandscapePhotoFilterEnum filter) {
 		// precondition
 		if (filter == null) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Landscape Photo Filter is not valid");
 		}
 
 		this.filter = filter;

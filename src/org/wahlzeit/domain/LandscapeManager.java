@@ -68,7 +68,7 @@ public class LandscapeManager extends ObjectManager {
 	
 	public void setCurrentId(int currentId) {
 		if (currentId < 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(currentId+"<0");
 		}
 
 		this.currentId = currentId;
@@ -194,6 +194,9 @@ public class LandscapeManager extends ObjectManager {
 	
 	@Override
 	protected Persistent createObject(ResultSet rset) throws SQLException {
+		if (rset == null)
+			throw new IllegalArgumentException("ResultSet is invalid");
+		
 		return LandscapePhotoFactory.getInstance().createLandscape(rset);
 	}
 	/***************************************************************************************************/

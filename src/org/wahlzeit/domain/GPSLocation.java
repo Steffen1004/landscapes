@@ -26,7 +26,6 @@ public class GPSLocation extends AbstractLocation implements Location {
 	 * Initializes a new GPSLocation.
 	 * 
 	 * @methodtype constructor
-	 * @param
 	 */
 	public GPSLocation() {
 		this.latitude = 0.0;
@@ -36,9 +35,9 @@ public class GPSLocation extends AbstractLocation implements Location {
 	/**
 	 * Initializes a new GPSLocation.
 	 * 
-	 * @methodtype constructor
-	 * @param double latitude double longitude
+	 * @param double latitude, double longitude
 	 * @throws LocationException 
+	 * @methodtype constructor
 	 */
 	public GPSLocation(double latitude, double longitude) throws LocationException {
 		assertIsValidLocation(latitude, longitude);
@@ -46,7 +45,9 @@ public class GPSLocation extends AbstractLocation implements Location {
 	}
 
 	/**
+	 * Initializes the location.
 	 * 
+	 * @param double latitude, double longitude
 	 * @methodtype initialization
 	 */
 	protected void initialize(double latitude, double longitude) {
@@ -55,6 +56,9 @@ public class GPSLocation extends AbstractLocation implements Location {
 	}
 
 	/**
+	 * Checks if the latitude and longitude value are valid.
+	 * 
+	 * @param double latitude, double longitude
 	 * @throws LocationException 
 	 * @methodtype assertion
 	 */
@@ -71,6 +75,8 @@ public class GPSLocation extends AbstractLocation implements Location {
 	@Override
 	/**
 	 * Sets the location(latitude, longitude).
+	 * 
+	 * @param double latitude, double longitude
 	 * @methodtype set
 	 */
 	public void doSetLocation(double latitude, double longitude) {
@@ -127,6 +133,8 @@ public class GPSLocation extends AbstractLocation implements Location {
 	@Override
 	/**
 	 * Sets the mapcode as location of a photo.
+	 * 
+	 * @param String mapcode
 	 * @methodtype set
 	 */
 	public void setMapcode(String mapcode) throws LocationException {
@@ -156,6 +164,7 @@ public class GPSLocation extends AbstractLocation implements Location {
 	/**
 	 * Checks if the photo has an location.
 	 *
+	 * @param double latitude, double longitude
 	 * @return boolean 
 	 * @methodtype boolean query method
 	 */

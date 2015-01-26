@@ -120,7 +120,7 @@ public class LandscapeManager extends ObjectManager {
 	public Landscape createLandscape() throws Exception {
 		this.currentId++;
 		Integer id = Integer.valueOf(this.currentId);
-		Landscape result = LandscapePhotoFactory.getInstance().createLandscape(
+		Landscape result = LandscapeFactory.getInstance().createLandscape(
 				id);
 		addLandscape(result);
 		return result;
@@ -197,7 +197,7 @@ public class LandscapeManager extends ObjectManager {
 		if (rset == null)
 			throw new IllegalArgumentException("ResultSet is invalid");
 		
-		return LandscapePhotoFactory.getInstance().createLandscape(rset);
+		return LandscapeFactory.getInstance().createLandscape(rset);
 	}
 	/***************************************************************************************************/
 }

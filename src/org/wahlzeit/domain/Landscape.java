@@ -39,7 +39,7 @@ public class Landscape extends DataObject {
 
 	/*******************Manager Collaboration: Domain Object*************************************************************/
 	/**
-	 * 
+	 * @param Integer id
 	 * @methodtype constructor
 	 */
 	public Landscape(Integer id) {
@@ -48,7 +48,7 @@ public class Landscape extends DataObject {
 	}
 
 	/**
-	 * 
+	 * @param Integer id, String name
 	 * @methodtype constructor
 	 */
 	public Landscape(Integer id, String name) {
@@ -58,7 +58,7 @@ public class Landscape extends DataObject {
 	}
 
 	/**
-	 * 
+	 * @param Landscape rset
 	 * @methodtype constructor
 	 */
 	public Landscape(ResultSet rset) throws SQLException {
@@ -69,7 +69,8 @@ public class Landscape extends DataObject {
 	
 	/********************** Landscape/ LandscapePhoto Collaboration: "Domain Object" methods ****************************/
 	/**
-	 *
+	 * Returns the local ID.
+	 * 
 	 * @return Integer
 	 * @methodtype get method
 	 */
@@ -88,6 +89,7 @@ public class Landscape extends DataObject {
 
 	/**
 	 *
+	 * @param String name
 	 * @methodtype set method
 	 */
 	public void setName(String name) {
@@ -105,6 +107,7 @@ public class Landscape extends DataObject {
 	@Override
 	/**
 	 * Returns a simple readable discription of the id.
+	 * 
 	 * @return String
 	 * @methodtype get
 	 */
@@ -125,6 +128,7 @@ public class Landscape extends DataObject {
 	/*************************Type Object Collaboration: “Base Object” methods +
 	 *  Landscape/ LandscapePhoto Collaboration: "Domain Object" methods *********************/
 	/**
+	 * Returns the LandscapeType
 	 *
 	 * @methodtype get method
 	 */
@@ -133,7 +137,9 @@ public class Landscape extends DataObject {
 	}
 
 	/**
+	 * Sets the LandscapeType.
 	 *
+	 * @param LandscapeType
 	 * @methodtype set method
 	 */
 	public void setLandscapeType(LandscapeType type) {
@@ -154,7 +160,8 @@ public class Landscape extends DataObject {
 	@Override
 	/**
 	 * 
-	 *@methodtype initialization 
+	 * @param ResultSet
+	 * @methodtype initialization 
 	 */
 	public void readFrom(ResultSet rset) throws SQLException {
 		this.id = rset.getInt("id");
@@ -175,8 +182,8 @@ public class Landscape extends DataObject {
 
 	@Override
 	/**
-	 * 
-	 *@methodtype command method  
+	 * @param ResultSet
+	 * @methodtype command method  
 	 */
 	public void writeOn(ResultSet rset) throws SQLException {
 		rset.updateInt("id", this.id);
@@ -198,7 +205,8 @@ public class Landscape extends DataObject {
 	@Override
 	/**
 	 * 
-	 *@methodtype command method  
+	 * @param PreparedStatement, int
+	 * @methodtype command method  
 	 */
 	public void writeId(PreparedStatement stmt, int pos) throws SQLException {
 		stmt.setInt(pos, this.id);

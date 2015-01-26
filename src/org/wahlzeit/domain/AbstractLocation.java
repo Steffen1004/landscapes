@@ -14,7 +14,7 @@ public abstract class AbstractLocation implements Location {
 	/**
 	 * Sets the mapcode as location of a photo.
 	 * @throws LocationException 
-	 * 
+	 * @param String mapcode
 	 * @methodtype set
 	 */
 	public abstract void setMapcode(String mapcode) throws LocationException;
@@ -45,7 +45,7 @@ public abstract class AbstractLocation implements Location {
 
 	/**
 	 * Sets the location.
-	 * 
+	 * @param double latitude, double longitude
 	 * @methodtype set
 	 */
 	public void setLocation(double latitude, double longitude) {
@@ -54,14 +54,14 @@ public abstract class AbstractLocation implements Location {
 
 	/**
 	 * Sets the location(latitude, longitude).
-	 * 
+	 * @param double latitude, double longitude
 	 * @methodtype set
 	 */
 	protected abstract void doSetLocation(double latitude, double longitude);
 
 	/**
 	 * Sets the location.
-	 * 
+	 * @param double[] location
 	 * @methodtype set
 	 */
 	public void setLocation(double[] location) {
@@ -94,7 +94,7 @@ public abstract class AbstractLocation implements Location {
 
 	/**
 	 * Returns true if objects are equal. Objects may be different classes.
-	 * 
+	 * @param double latitude, double longitude
 	 * @param location
 	 * @return boolean
 	 */

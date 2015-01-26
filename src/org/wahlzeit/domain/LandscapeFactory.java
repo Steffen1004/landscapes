@@ -3,13 +3,10 @@ package org.wahlzeit.domain;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.wahlzeit.model.Photo;
-import org.wahlzeit.model.PhotoFactory;
-import org.wahlzeit.model.PhotoId;
 import org.wahlzeit.services.SysLog;
 
 /**
- * Landscape photo factory.
+ * Landscape factory.
  * Factory-Collaboration: Concrete Factory: implements operation to create LandscapePhotos
  *
  * @author Steffen Loskarn
@@ -18,35 +15,35 @@ import org.wahlzeit.services.SysLog;
  *
  */
 
-public class LandscapePhotoFactory extends PhotoFactory {
-
+public class LandscapeFactory {
+	
 	/**
 	 * Hidden singleton instance; needs to be initialized from the outside.
 	 */
-	private static LandscapePhotoFactory instance = null;
+	private static LandscapeFactory instance = null;
 
 	/**
 	 * Public singleton access method.
 	 */
-	public static synchronized LandscapePhotoFactory getInstance() {
+	public static synchronized LandscapeFactory getInstance() {
 		if (instance == null) {
-			SysLog.logSysInfo("setting generic LandscapePhotoFactory");
-			setInstance(new LandscapePhotoFactory());
+			SysLog.logSysInfo("setting generic LandscapeFactory");
+			setInstance(new LandscapeFactory());
 		}
 
 		return instance;
 	}
 
 	/**
-	 * Method to set the singleton instance of LandscapePhotoFactory.
+	 * Method to set the singleton instance of LandscapeFactory.
 	 */
 	protected static synchronized void setInstance(
-			LandscapePhotoFactory landscapePhotoFactory) {
+			LandscapeFactory landscapeFactory) {
 		if (instance != null) {
-			throw new IllegalStateException("attempt to initalize LandscapePhotoFactory twice");
+			throw new IllegalStateException("attempt to initalize LandscapeFactory twice");
 		}
 
-		instance = landscapePhotoFactory;
+		instance = landscapeFactory;
 	}
 
 	/**
@@ -59,34 +56,31 @@ public class LandscapePhotoFactory extends PhotoFactory {
 	/**
 	 * 
 	 */
-	private LandscapePhotoFactory() {
+	private LandscapeFactory() {
 		super();
 	}
 
 	/*******************************Factory-Collaboration: Concrete Factory************************************/
-	
 	/**
-	 * @return Photo
+	 *
+	 * @return Landscape
 	 * @methodtype factory
 	 */
-	public Photo createPhoto() {
-		return new LandscapePhoto();
+	public Landscape createLandscape(Integer id) {
+		return new Landscape(id);
 	}
-	
+
 	/**
-	 * @return Photo
+	 * 
+	 * @return Landscape
 	 * @methodtype factory
 	 */
-	public Photo createPhoto(PhotoId id) {
-		return new LandscapePhoto(id);
-	}
-	
-	/**
-	 * @return Photo
-	 * @methodtype factory 
-	 */
-	public Photo createPhoto(ResultSet rs) throws SQLException {
-		return new LandscapePhoto(rs);
+	public Landscape createLandscape(ResultSet rset) throws SQLException {
+		if (rset == null)
+			throw new IllegalArgumentException("ResultSet is invalid");
+		
+		return new Landscape(rset);
 	}
 	/************************************************************************/
+
 }

@@ -23,9 +23,9 @@ package org.wahlzeit.model;
 import java.sql.*;
 import java.net.*;
 
-import org.wahlzeit.domain.GPSLocation;
-import org.wahlzeit.domain.Location;
-import org.wahlzeit.domain.LocationException;
+import org.domainzeit.model.location.GPSLocation;
+import org.domainzeit.model.location.Location;
+import org.domainzeit.exception.LocationException;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
 

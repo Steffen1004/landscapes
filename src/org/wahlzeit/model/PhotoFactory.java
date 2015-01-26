@@ -22,7 +22,7 @@ package org.wahlzeit.model;
 
 import java.sql.*;
 
-import org.wahlzeit.domain.LandscapePhoto;
+import org.domainzeit.model.LandscapePhoto;
 import org.wahlzeit.services.*;
 
 /**

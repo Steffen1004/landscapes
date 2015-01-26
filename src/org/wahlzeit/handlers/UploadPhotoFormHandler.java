@@ -23,15 +23,9 @@ package org.wahlzeit.handlers;
 import java.util.*;
 import java.io.*;
 
-import org.wahlzeit.domain.GPSLocation;
-import org.wahlzeit.domain.Landscape;
-import org.wahlzeit.domain.LandscapeManager;
-import org.wahlzeit.domain.LandscapePhoto;
-import org.wahlzeit.domain.LandscapeStyle;
-import org.wahlzeit.domain.LandscapePhotoFilterEnum;
-import org.wahlzeit.domain.LandscapeType;
-import org.wahlzeit.domain.Location;
-import org.wahlzeit.domain.LocationException;
+import org.domainzeit.exception.LocationException;
+import org.domainzeit.model.*;
+import org.domainzeit.model.location.*;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;

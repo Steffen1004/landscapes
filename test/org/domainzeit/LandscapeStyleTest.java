@@ -1,6 +1,6 @@
-package org.wahlzeit.domain;
+package org.domainzeit;
 
-import org.wahlzeit.domain.LandscapeStyle;
+import org.domainzeit.model.LandscapeStyle;
 
 import junit.framework.TestCase;
 

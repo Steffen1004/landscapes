@@ -1,4 +1,7 @@
-package org.wahlzeit.domain;
+package org.domainzeit;
+
+import org.domainzeit.model.Landscape;
+import org.domainzeit.model.LandscapeManager;
 
 import junit.framework.TestCase;
 

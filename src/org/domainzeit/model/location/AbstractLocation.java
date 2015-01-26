@@ -1,7 +1,10 @@
-package org.wahlzeit.domain;
+package org.domainzeit.model.location;
+
+import org.domainzeit.exception.LocationException;
 
 /**
- * Abstract class Location which implements the interface location.
+ * Abstract class Location which implements the interface location,
+ * and avoids double source code in the subclasses.
  *
  * @author Steffen Loskarn
  * @version 1.0
@@ -13,6 +16,7 @@ public abstract class AbstractLocation implements Location {
 
 	/**
 	 * Sets the mapcode as location of a photo.
+	 * 
 	 * @throws LocationException 
 	 * @param String mapcode
 	 * @methodtype set
@@ -45,6 +49,7 @@ public abstract class AbstractLocation implements Location {
 
 	/**
 	 * Sets the location.
+	 * 
 	 * @param double latitude, double longitude
 	 * @methodtype set
 	 */
@@ -54,6 +59,7 @@ public abstract class AbstractLocation implements Location {
 
 	/**
 	 * Sets the location(latitude, longitude).
+	 * 
 	 * @param double latitude, double longitude
 	 * @methodtype set
 	 */
@@ -61,6 +67,7 @@ public abstract class AbstractLocation implements Location {
 
 	/**
 	 * Sets the location.
+	 * 
 	 * @param double[] location
 	 * @methodtype set
 	 */
@@ -94,6 +101,7 @@ public abstract class AbstractLocation implements Location {
 
 	/**
 	 * Returns true if objects are equal. Objects may be different classes.
+	 * 
 	 * @param double latitude, double longitude
 	 * @param location
 	 * @return boolean

@@ -1,7 +1,12 @@
-package org.wahlzeit.domain;
+package org.domainzeit.model.location;
+
+import org.domainzeit.exception.LocationException;
 
 /**
- * Location interface
+ * The Location interface captures all methods available for GPSLocation, MapcodeLocations etc.
+ * 
+ * Location/Photo Collaboration: Location is the service
+ * with the purpose to provide location functionality to the Photo class.
  *
  * @author Steffen Loskarn
  * @version 1.0

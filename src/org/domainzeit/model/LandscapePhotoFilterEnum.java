@@ -1,8 +1,13 @@
-package org.wahlzeit.domain;
+package org.domainzeit.model;
+
+import org.domainzeit.model.location.EnumValue;
 
 /**
- * Landscape LandscapeFilterTechniqueEnum.
- *
+ * The LandscapeFilterTechniqueEnum is an Value Object to provide information about
+ * the photo filter used for the corresponding landscape.
+ * 
+ * Value Object Collaboration: Value Object
+ * 
  * @author Steffen Loskarn
  * @version 1.0
  * @date 28.11.2014

@@ -1,7 +1,9 @@
-package org.wahlzeit.domain;
+package org.domainzeit.model.location;
 
 /**
- * GPSLocation implementation. 
+ * GPSLocation extends AbstractLocation by using two double 
+ * values, one for the latitude value and one for the longitude
+ * value of the GPS coordinates.
  *
  * @author Steffen Loskarn
  * @version 1.0
@@ -9,6 +11,7 @@ package org.wahlzeit.domain;
  *
  */
 
+import org.domainzeit.exception.LocationException;
 import org.wahlzeit.services.Log;
 import org.wahlzeit.services.SysLog;
 
@@ -135,6 +138,7 @@ public class GPSLocation extends AbstractLocation implements Location {
 	 * Sets the mapcode as location of a photo.
 	 * 
 	 * @param String mapcode
+	 * @throws LocationException
 	 * @methodtype set
 	 */
 	public void setMapcode(String mapcode) throws LocationException {

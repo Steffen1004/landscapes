@@ -22,7 +22,7 @@ package org.wahlzeit.handlers;
 
 import java.util.*;
 
-import org.wahlzeit.domain.LandscapePhoto;
+import org.domainzeit.model.LandscapePhoto;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
@@ -160,7 +160,6 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 	 */
 	protected void makePhotoCaption(UserSession us, WebPart page) {
 		Photo photo = us.getPhoto();
-		// String photoId = photo.getId().asString();
 			
 		WebPart caption = createWebPart(us, PartUtil.CAPTION_INFO_FILE);
 		caption.addString(Photo.CAPTION, getPhotoCaption(us, photo));

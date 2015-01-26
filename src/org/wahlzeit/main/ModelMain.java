@@ -24,11 +24,10 @@ import java.io.File;
 import java.io.FileFilter;
 import java.sql.*;
 
-import org.wahlzeit.domain.LandscapeManager;
+import org.domainzeit.model.*;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.*;
 import org.wahlzeit.servlets.AbstractServlet;
-import org.wahlzeit.webparts.*;
 
 /**
  * A single-threaded Main class with database connection.

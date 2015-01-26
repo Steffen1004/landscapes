@@ -1,8 +1,11 @@
-package org.wahlzeit.domain;
+package org.domainzeit.location;
 
-import org.wahlzeit.domain.GPSLocation;
-import org.wahlzeit.domain.Location;
-import org.wahlzeit.domain.MapcodeLocation;
+
+
+import org.domainzeit.exception.LocationException;
+import org.domainzeit.model.location.GPSLocation;
+import org.domainzeit.model.location.Location;
+import org.domainzeit.model.location.MapcodeLocation;
 
 import com.mapcode.MapcodeCodec;
 

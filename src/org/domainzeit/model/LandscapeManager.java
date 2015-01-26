@@ -1,4 +1,4 @@
-package org.wahlzeit.domain;
+package org.domainzeit.model;
 
 import org.wahlzeit.services.ObjectManager;
 import java.io.File;

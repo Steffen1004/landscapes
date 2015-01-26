@@ -1,10 +1,13 @@
-package org.wahlzeit.domain;
+package org.domainzeit.model;
 
 /**
  * 
  * Type Object Collaboration: LandscapeType is the "Type Object" for landscape
  * with the purpose to provide descriptive information common to all instances
  * of a type.
+ * 
+ * ValueObject Collaboration: LandscapeType has the "Client" role, which gets 
+ * the photo filter functionality from the ValueObject LandscapePhotoFilterEnum.
  * 
  * @author Steffen Loskarn
  * @version 2.0
@@ -15,6 +18,7 @@ package org.wahlzeit.domain;
 public class LandscapeType {
 
 	protected LandscapeStyle landscapeStyle = new LandscapeStyle();
+	/** ValueObject Collaboration: Client role */
 	protected LandscapePhotoFilterEnum filter = LandscapePhotoFilterEnum.NONE;
 
 	/**
@@ -50,6 +54,7 @@ public class LandscapeType {
 		assert landscapeStyle == this.landscapeStyle;
 	}
 
+	/************************************** ValueObject Collaboration: Client role ******************************/
 	/**
 	 *
 	 * @return LandscapePhotoFilterEnum

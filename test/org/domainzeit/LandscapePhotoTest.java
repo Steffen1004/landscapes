@@ -1,7 +1,8 @@
-package org.wahlzeit.domain;
+package org.domainzeit;
 
-import org.wahlzeit.domain.LandscapePhoto;
-import org.wahlzeit.domain.LandscapeStyle;
+import org.domainzeit.model.LandscapePhoto;
+import org.domainzeit.model.LandscapePhotoFactory;
+import org.domainzeit.model.LandscapeStyle;
 
 import junit.framework.TestCase;
 

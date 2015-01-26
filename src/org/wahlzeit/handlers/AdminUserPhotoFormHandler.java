@@ -22,14 +22,14 @@ package org.wahlzeit.handlers;
 
 import java.util.*;
 
-import org.wahlzeit.domain.GPSLocation;
-import org.wahlzeit.domain.Landscape;
-import org.wahlzeit.domain.LandscapeManager;
-import org.wahlzeit.domain.LandscapePhoto;
-import org.wahlzeit.domain.LandscapePhotoFilterEnum;
-import org.wahlzeit.domain.LandscapeStyle;
-import org.wahlzeit.domain.Location;
-import org.wahlzeit.domain.LocationException;
+import org.domainzeit.exception.LocationException;
+import org.domainzeit.model.Landscape;
+import org.domainzeit.model.LandscapeManager;
+import org.domainzeit.model.LandscapePhoto;
+import org.domainzeit.model.LandscapePhotoFilterEnum;
+import org.domainzeit.model.LandscapeStyle;
+import org.domainzeit.model.location.GPSLocation;
+import org.domainzeit.model.location.Location;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.SysLog;
 import org.wahlzeit.webparts.*;

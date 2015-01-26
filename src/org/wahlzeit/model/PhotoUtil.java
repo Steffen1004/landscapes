@@ -26,7 +26,7 @@ import java.awt.image.*;
 
 import javax.imageio.*;
 
-import org.wahlzeit.domain.LandscapePhotoFactory;
+import org.domainzeit.model.LandscapePhotoFactory;
 import org.wahlzeit.services.*;
 
 /**

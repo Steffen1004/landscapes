@@ -24,7 +24,7 @@ import java.io.*;
 import java.sql.*;
 import java.util.*;
 
-import org.wahlzeit.domain.LandscapePhotoFactory;
+import org.domainzeit.model.LandscapePhotoFactory;
 import org.wahlzeit.main.*;
 import org.wahlzeit.services.*;
 

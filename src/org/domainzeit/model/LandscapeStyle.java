@@ -1,7 +1,7 @@
-package org.wahlzeit.domain;
+package org.domainzeit.model;
 
 /**
- * LandscapeType contains the type of photo.
+ * LandscapeStyle contains the style of the landscape.
  * 
  * @invariant You must not mix type: - forest and dessert - mountain and ocean
  *
@@ -29,7 +29,8 @@ public class LandscapeStyle {
 	}
 
 	/**
-	 * 
+	 * @param boolean mountain, boolean forest, boolean dessert, 
+	 * boolean countryside, boolean beach, boolean steppe, boolean ocean
 	 * @methodtype constructor
 	 */
 	public LandscapeStyle(boolean mountain, boolean forest, boolean dessert,
@@ -44,7 +45,7 @@ public class LandscapeStyle {
 	}
 
 	/**
-	 *
+	 * @param boolean mountain
 	 * @methodtype set method
 	 */
 	public void setMountain(boolean mountain) throws IllegalArgumentException {
@@ -58,7 +59,7 @@ public class LandscapeStyle {
 	}
 
 	/**
-	 *
+	 * @param boolean forest
 	 * @methodtype set method
 	 */
 	public void setForest(boolean forest) throws RuntimeException {
@@ -72,7 +73,7 @@ public class LandscapeStyle {
 	}
 
 	/**
-	 *
+	 * @param boolean dessert
 	 * @methodtype set method
 	 */
 	public void setDessert(boolean dessert) throws RuntimeException {
@@ -86,7 +87,7 @@ public class LandscapeStyle {
 	}
 
 	/**
-	 *
+	 * @param boolean steppe
 	 * @methodtype set method
 	 */
 	public void setSteppe(boolean steppe) {
@@ -96,7 +97,7 @@ public class LandscapeStyle {
 	}
 
 	/**
-	 *
+	 * @param boolean beach
 	 * @methodtype set method
 	 */
 	public void setBeach(boolean beach) {
@@ -106,7 +107,7 @@ public class LandscapeStyle {
 	}
 
 	/**
-	 *
+	 * @param boolean countryside
 	 * @methodtype set method
 	 */
 	public void setCountryside(boolean countryside) {
@@ -116,7 +117,7 @@ public class LandscapeStyle {
 	}
 
 	/**
-	 *
+	 * @param boolean ocean
 	 * @methodtype set method
 	 */
 	public void setOcean(boolean ocean) {
@@ -130,7 +131,8 @@ public class LandscapeStyle {
 	}
 
 	/**
-	 *
+	 * 
+	 * @return boolean
 	 * @methodtype get method
 	 */
 	public boolean getMountain() {

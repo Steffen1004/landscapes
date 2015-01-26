@@ -1,4 +1,4 @@
-package org.wahlzeit.domain;
+package org.domainzeit.model.location;
 
 /**
  * Interface EnumValue.

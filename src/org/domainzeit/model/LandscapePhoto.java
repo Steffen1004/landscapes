@@ -1,4 +1,4 @@
-package org.wahlzeit.domain;
+package org.domainzeit.model;
 
 /**
  * Landscape/ Landscape Photo Collaboration: LandscapePhoto has the Client role, which gets 
@@ -53,7 +53,7 @@ public class LandscapePhoto extends Photo {
 	}
 
 	/**
-	 * 
+	 * @param ResultSet
 	 * @methodtype constructor
 	 */
 	public LandscapePhoto(ResultSet rset) throws SQLException {
@@ -77,7 +77,7 @@ public class LandscapePhoto extends Photo {
 	/************************* Collaboration Serliazer ********************************/
 
 	/**
-	 * 
+	 * @param ResultSet
 	 * @methodtype initialization
 	 */
 	@Override
@@ -89,7 +89,7 @@ public class LandscapePhoto extends Photo {
 	}
 
 	/**
-	 * 
+	 * @param ResultSet
 	 * @methodtype command method
 	 */
 	@Override
@@ -111,7 +111,7 @@ public class LandscapePhoto extends Photo {
 	}
 
 	/**
-	 *
+	 * @param Landscape
 	 * @methodtype set method
 	 */
 	public void setLandscape(Landscape landscape) {

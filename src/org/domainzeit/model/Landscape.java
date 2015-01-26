@@ -1,4 +1,4 @@
-package org.wahlzeit.domain;
+package org.domainzeit.model;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -159,7 +159,6 @@ public class Landscape extends DataObject {
 	/***************** Collaboration: Serializer*****************************************************************/
 	@Override
 	/**
-	 * 
 	 * @param ResultSet
 	 * @methodtype initialization 
 	 */
@@ -204,7 +203,6 @@ public class Landscape extends DataObject {
 
 	@Override
 	/**
-	 * 
 	 * @param PreparedStatement, int
 	 * @methodtype command method  
 	 */

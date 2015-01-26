@@ -1,7 +1,8 @@
-package org.wahlzeit.domain;
+package org.domainzeit.model.location;
 
 /**
- * Mapcode Location implementation. 
+ * Mapcode Location implementation provides the location
+ * as a String value, which contains the international mapcode.
  *
  * @author Steffen Loskarn
  * @version 1.0
@@ -10,6 +11,8 @@ package org.wahlzeit.domain;
  */
 
 import java.util.List;
+
+import org.domainzeit.exception.LocationException;
 
 import com.mapcode.Mapcode;
 import com.mapcode.MapcodeCodec;
@@ -27,7 +30,6 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 	 * Initializes a new MapcodeLocation.
 	 * 
 	 * @methodtype constructor
-	 * @param
 	 * @throws LocationException 
 	 */
 	public MapcodeLocation() throws LocationException {
@@ -38,6 +40,7 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 	/**
 	 * Initializes a new MapcodeLocation.
 	 *
+	 * @param String mapcode
 	 * @return MapcodeLocation
 	 * @throws LocationException 
 	 * @methodtype constructor
@@ -49,7 +52,9 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 	}
 
 	/**
+	 * Initializes a new MapcodeLocation.
 	 * 
+	 * @param String mapcode
 	 * @throws LocationException 
 	 * @methodtype initialization
 	 */
@@ -68,6 +73,8 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 	@Override
 	/**
 	 * Sets the location(latitude, longitude).
+	 * 
+	 * @param double latitude, double longitude
 	 * @methodtype set
 	 */
 	public void doSetLocation(double latitude, double longitude) {
@@ -76,6 +83,9 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 	}
 
 	/**
+	 * Checks, if the location is an valid location.
+	 * 
+	 * @param String mapcode
 	 * @throws LocationException 
 	 * @methodtype assertion
 	 */
@@ -102,6 +112,9 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 	@Override
 	/**
 	 * Sets the mapcode as location of a photo.
+	 * 
+	 * @param String mapcode
+	 * @throws LocationException
 	 * @methodtype set
 	 */
 	public void setMapcode(String mapcode) throws LocationException {
@@ -162,7 +175,8 @@ public class MapcodeLocation extends AbstractLocation implements Location {
 
 	@Override
 	/**
-	 *
+	 * 
+	 * @param double latitude, double longitude
 	 * @return boolean
 	 * @methodtype comparison
 	 */
